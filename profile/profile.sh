@@ -5,6 +5,10 @@
 
 # ------------------------------------------------------------------------------
 
+exists() {
+    if hash "$1" 2>/dev/null; then return 0; else return 1; fi
+}
+
 # determine platform
 case $(uname) in
 *BSD* | Dragon*) export PLATFORM='bsd' ;;
@@ -59,11 +63,10 @@ fi
 export WWW_HOME=google.com
 
 # history
-export HISTFILE="$HOME/.history"
 export HISTFILESIZE=50000
+export HISTFILE="$HOME/.history"
 export HISTSIZE=$HISTFILESIZE
 export SAVEHIST=$HISTFILESIZE
-export HISTCONTROL=ignoreboth:erasedups
 touch "$HISTFILE"
 
 # basic prompt
@@ -97,3 +100,6 @@ if exists 'fd'; then
     export FZF_DEFAULT_COMMAND='fd --type f --exclude node_modules'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
+
+# Disable "Software Flow Control" so that CTRL-s shortcut can be used
+stty -ixon

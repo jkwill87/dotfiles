@@ -1,0 +1,10 @@
+.env
+.idea
+.vscode
+*.htpasswd
+*.log
+*.swp
+*DS_Store
+data
+node_modules
+tags

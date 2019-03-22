@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# prompt.bash
-# jessy@jessywilliams.com
-
-# ------------------------------------------------------------------------------
-
-# echo fortune if installed
-if exists fortune; then
-    fortune
-    echo ''
-fi
-
 # set shell colours
 if [[ $(tput colors 2>&1) == 256 ]]; then
     c_reset="\[$(tput sgr0)\]"
@@ -43,8 +32,7 @@ else
     session='%'
 fi
 
-# get last command's exit code
-get_sigil() {
+_get_sigil() {
     local retval=$?
     if [ $retval != 0 ]; then
         echo '!'
@@ -53,30 +41,28 @@ get_sigil() {
     fi
 }
 
-# get git info
-get_git() {
+_get_git() {
     local branch
-    local status
+    local token
 
     if branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); then
         if [[ "$branch" == "HEAD" ]]; then
             branch='detached*'
         fi
         if [[ $(git status --porcelain 2>/dev/null) != "" ]]; then
-            status='*'
+            token='*'
         fi
-        echo " <$branch$status>"
+        echo " <$branch$token>"
     fi
 }
 
-# format prompt
-get_prompt() {
-    local sigil=$(get_sigil) # must be first!
+_get_prompt() {
+    local sigil=$(_get_sigil) # must be first!
     local cwd='\W'
     local host='\h'
     local path='\w'
     local username='\u'
-    local vcs=$(get_git)
+    local vcs=$(_get_git)
 
     PS1=$c_user
     PS1+=$username
@@ -95,11 +81,4 @@ get_prompt() {
     PS1+=" $sigil "
 }
 
-# instruct bash to reload prompt after each command
-PROMPT_COMMAND=get_prompt
-
-# write to bash history after every command, sharing between terminal windows
-PROMPT_COMMAND="$PROMPT_COMMAND; history -a; history -c; history -r"
-
-# start prompt in previous directory
-# cdd 1
+PROMPT_COMMAND=_get_prompt

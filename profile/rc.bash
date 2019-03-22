@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 
-# If not running interactively, don't do anything else
+# if not running interactively, don't do anything else
 [[ $- != *i* ]] && return
 
 # only load once per session
@@ -32,17 +32,12 @@ shopt -s nocaseglob
 shopt -s nocasematch
 
 # source shell scripts
-if [ -d $HOME/.config/shell ]; then
-    for file in "$HOME"/.config/shell/*.sh; do
+if [ -d $HOME/.config/tty ]; then
+    for file in "$HOME"/.config/tty/*.{sh,bash}; do
         source "$file"
     done
     unset file
 fi
 
-# source bash scripts
-if [ -n "$BASH_VERSION" ] && [ -d $HOME/.config/bash ]; then
-    for file in "$HOME"/.config/bash/*.bash; do
-        source "$file"
-    done
-    unset file
-fi
+# fzf
+[ -r "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"

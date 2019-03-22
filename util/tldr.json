@@ -1,0 +1,11 @@
+{
+  "themes": {
+    "subtle": {
+      "commandName": "yellow",
+      "exampleDescription": "bold",
+      "exampleCode": "yellow"
+    }
+  },
+  "theme": "subtle"
+}
+

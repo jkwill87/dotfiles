@@ -16,7 +16,10 @@ alias ping="ping -c 3"
 alias flush_dns="nscd -K && nscd"
 
 # xclip
-if exists 'xclip'; then
+if [ "$PLATFORM" = linux ] && exists 'xclip'; then
     alias pbcopy="xclip -selection clipboard"
     alias pbpaste="xclip -selection clipboard -o"
 fi
+
+# editor
+exists 'nvim' && alias vim='nvim'

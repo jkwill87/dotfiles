@@ -5,7 +5,7 @@
 
 # ------------------------------------------------------------------------------
 
-# If not running interactively, don't do anything else
+# if not running interactively, don't do anything else
 [[ $- != *i* ]] && return
 
 # only load once per session
@@ -34,23 +34,49 @@ compinit -u
 zstyle ':completion:*' menu select
 
 # history
-setopt nosharehistory
 setopt incappendhistory
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
 
-# source shell files
-if [ -d "$HOME"/.config/shell ]; then
-    for file in "$HOME"/.config/shell/*.sh; do
+# fzf
+[ -r "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+
+# http
+if [[ -n "$BROWSER" ]]; then
+    _browser_fts=(htm html de org net com dev)
+    for ft in $_browser_fts; do
+        alias -s $ft=$BROWSER
+    done
+fi
+
+# documents
+alias -s txt=less
+alias -s csv=less
+alias -s json=less
+
+# archives
+alias -s zip="unzip -l"
+alias -s rar="unrar l"
+alias -s tar="tar tf"
+alias -s tar.gz="echo "
+alias -s ace="unace l"
+
+# source shell scripts
+if [ -d $HOME/.config/tty ]; then
+    for file in "$HOME"/.config/tty/*.{sh,bash,zsh}; do
+        [ $(expr substr $file 1 1) = _ ] && continue
         source "$file"
     done
     unset file
 fi
 
-# source zsh files
-if [ -n "$ZSH_VERSION" ] && [ -d $HOME/.config/zsh ]; then
-    for file in "$HOME"/.config/zsh/*.zsh; do
-        source "$file"
-    done
-    unset file
+# prompt
+function precmd() {
+    PROMPT="%(#~%F{92}~%F{27})%n%F{39}@%m%F{45}:%c%f%F{51}$(_get_git) %f%(#~%#~$) "
+}
+autoload -Uz colors promptinit
+colors
+
+# fortune
+if exists 'fortune'; then
+    fortune
+    echo
 fi
