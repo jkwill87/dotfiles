@@ -44,13 +44,24 @@ else
     export DISTRO='other'
 fi
 
-# add user bin directory to PATH
+# add user bin directories to PATH
 [ -d "${HOME}/bin" ] && PATH="$HOME/bin:$PATH"
+[ -d "${HOME}/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+[ -d '/usr/local/opt/llvm/bin' ] && PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # add user library paths
 [ -d "$HOME/lib" ] && LD_LIBRARY_PATH="$HOME/lib:$LD_LIBRARY_PATH"
 [ -d "$HOME/share" ] && XDG_DATA_DIRS="$HOME/share:$XDG_DATA_DIRS"
 [ -d "$HOME/include" ] && C_INCLUDE_PATH="$HOME/include:$C_INCLUDE_PATH"
+
+# macos specific stuff
+if [ $PLATFORM = macos ]; then
+    if [ -d '/usr/local/opt/llvm' ]; then
+        export PATH="/usr/local/opt/llvm/bin:$PATH"
+        export LDFLAGS="-L/usr/local/opt/llvm/lib"
+        export CPPFLAGS="-I/usr/local/opt/llvm/include"
+    fi
+fi
 
 # editor
 if exists 'vim'; then
@@ -102,4 +113,4 @@ if exists 'fd'; then
 fi
 
 # Disable "Software Flow Control" so that CTRL-s shortcut can be used
-stty -ixon
+[ -t 0 ] && stty -ixon

@@ -25,19 +25,20 @@ else
     fi
 fi
 
-# get ssh status (one level down, will not pass through su)
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    session='@'
-else
-    session='%'
-fi
-
 _get_sigil() {
     local retval=$?
     if [ $retval != 0 ]; then
         echo '!'
     else
         echo '\$'
+    fi
+}
+
+_get_session() {
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+        echo '@'
+    else
+        echo '%'
     fi
 }
 
@@ -68,7 +69,7 @@ _get_prompt() {
     PS1+=$username
 
     PS1+=$c_host
-    PS1+=$session
+    PS1+=$(_get_session)
     PS1+=$host
 
     PS1+=$c_path

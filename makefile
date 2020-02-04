@@ -77,7 +77,7 @@ bash-clean:
 
 zsh_tty_src := $(wildcard ./tty/*.zsh)
 zsh_profile_src := ./profile/profile.zsh
-zsh_profile_dest := ${HOME}/.zsh_profile
+zsh_profile_dest := ${HOME}/.zprofile
 zsh_rc_src := ./profile/rc.zsh
 zsh_rc_dest := ${HOME}/.zshrc
 
