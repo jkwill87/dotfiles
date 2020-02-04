@@ -119,6 +119,7 @@ tmux:
 	cp $(tmux_rc_src) $(tmux_rc_dest)
 	mkdir -p $(tmux_script_dest)
 	cp $(tmux_script_src) $(tmux_script_dest)
+	chmod +x $(tmux_script_dest)/*
 
 tmux-clean:
 	rm -rvf $(tmux_rc_dest) ${tmux_script_dest}
