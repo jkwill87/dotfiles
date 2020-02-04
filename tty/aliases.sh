@@ -23,3 +23,7 @@ fi
 
 # editor
 exists 'nvim' && alias vim='nvim'
+
+# git
+alias gl="git log --pretty=oneline --no-merges --abbrev-commit"
+alias ga="git commit --ammend --no-edit"
