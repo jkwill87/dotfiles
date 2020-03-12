@@ -48,6 +48,8 @@ fi
 [ -d "${HOME}/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "${HOME}/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d '/usr/local/opt/llvm/bin' ] && PATH="/usr/local/opt/llvm/bin:$PATH"
+[ -d "${HOME}/.yarn/bin" ] && PATH="${HOME}/.yarn/bin:$PATH"
+[ -d "${HOME}/.rbenv/bin" ] && PATH="${HOME}/.rbenv/bin:$PATH"
 
 # add user library paths
 [ -d "$HOME/lib" ] && LD_LIBRARY_PATH="$HOME/lib:$LD_LIBRARY_PATH"
@@ -74,7 +76,7 @@ fi
 export WWW_HOME=google.com
 
 # history
-export HISTFILESIZE=50000
+export HISTFILESIZE=1000000
 export HISTFILE="$HOME/.history"
 export HISTSIZE=$HISTFILESIZE
 export SAVEHIST=$HISTFILESIZE
