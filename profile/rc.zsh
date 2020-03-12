@@ -30,6 +30,7 @@ zsh_completion_path='/usr/local/share/zsh-completions'
 [ -d "$zsh_completion_path" ] && fpath+=("$zsh_completion_path")
 setopt correctall
 SPROMPT="Correct $fg[blue]%R$reset_color to $fg[blue]%r?$reset_color [y/n/e/a] "
+alias sudo='nocorrect sudo'
 
 # autocomplete
 
