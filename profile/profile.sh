@@ -45,6 +45,7 @@ else
 fi
 
 # add user bin directories to PATH
+[ -d "/usr/share" ] && PATH="/usr/share:$PATH"
 [ -d "${HOME}/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "${HOME}/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d '/usr/local/opt/llvm/bin' ] && PATH="/usr/local/opt/llvm/bin:$PATH"
