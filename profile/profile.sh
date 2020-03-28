@@ -51,6 +51,7 @@ fi
 [ -d '/usr/local/opt/llvm/bin' ] && PATH="/usr/local/opt/llvm/bin:$PATH"
 [ -d "${HOME}/.yarn/bin" ] && PATH="${HOME}/.yarn/bin:$PATH"
 [ -d "${HOME}/.rbenv/bin" ] && PATH="${HOME}/.rbenv/bin:$PATH"
+[ -d "${HOME}/.node_modules/bin" ] && PATH="${HOME}/.node_modules/bin:$PATH"
 
 # add user library paths
 [ -d "$HOME/lib" ] && LD_LIBRARY_PATH="$HOME/lib:$LD_LIBRARY_PATH"
