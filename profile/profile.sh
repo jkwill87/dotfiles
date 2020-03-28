@@ -45,13 +45,15 @@ else
 fi
 
 # add user bin directories to PATH
-[ -d "/usr/share" ] && PATH="/usr/share:$PATH"
-[ -d "${HOME}/bin" ] && PATH="$HOME/bin:$PATH"
-[ -d "${HOME}/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d '/usr/local/opt/llvm/bin' ] && PATH="/usr/local/opt/llvm/bin:$PATH"
-[ -d "${HOME}/.yarn/bin" ] && PATH="${HOME}/.yarn/bin:$PATH"
-[ -d "${HOME}/.rbenv/bin" ] && PATH="${HOME}/.rbenv/bin:$PATH"
+[ -d "/usr/local/opt" ] && PATH="usr/local/opt:$PATH"
+[ -d "/usr/share" ] && PATH="/usr/share:$PATH"
+[ -d "${HOME}/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "${HOME}/.node_modules/bin" ] && PATH="${HOME}/.node_modules/bin:$PATH"
+[ -d "${HOME}/.rbenv/bin" ] && PATH="${HOME}/.rbenv/bin:$PATH"
+[ -d "${HOME}/.yarn/bin" ] && PATH="${HOME}/.yarn/bin:$PATH"
+[ -d "${HOME}/bin" ] && PATH="$HOME/bin:$PATH"
+export PATH
 
 # add user library paths
 [ -d "$HOME/lib" ] && LD_LIBRARY_PATH="$HOME/lib:$LD_LIBRARY_PATH"
