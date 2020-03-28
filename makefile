@@ -27,6 +27,7 @@ help:
 tty_dest := ${HOME}/.config/tty
 
 tty: profile shell bash zsh
+	touch ${HOME}/.dirstack
 
 tty-clean: shell-clean bash-clean zsh-clean
 	@rm -rvf $(tty_dest)
