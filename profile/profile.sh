@@ -79,13 +79,6 @@ fi
 # web
 export WWW_HOME=google.com
 
-# history
-export HISTFILESIZE=1000000
-export HISTFILE="$HOME/.history"
-export HISTSIZE=$HISTFILESIZE
-export SAVEHIST=$HISTFILESIZE
-touch "$HISTFILE"
-
 # basic prompt
 case "$-" in
 *i*) PS1="$USER@$(uname -n) $ " ;;
