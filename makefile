@@ -60,6 +60,8 @@ bash_profile_src := ./profile/profile.bash
 bash_profile_dest := ${HOME}/.bash_profile
 bash_rc_src := ./profile/rc.bash
 bash_rc_dest := ${HOME}/.bashrc
+z_src := ./profile/z.bash
+z_dest := ${HOME}/.z.bash
 
 bash:
 	$(info CONFIGURING BASH)
@@ -67,6 +69,7 @@ bash:
 	@cp -v $(bash_rc_src) $(bash_rc_dest)
 	@mkdir -pv $(tty_dest)
 	@cp -rv $(bash_tty_src) $(tty_dest)
+	@cp -v $(z_src) $(z_dest)
 
 bash-clean:
 	$(info CLEANING BASH)
@@ -88,6 +91,7 @@ zsh:
 	@cp -v $(zsh_rc_src) $(zsh_rc_dest)
 	@mkdir -vp $(tty_dest)
 	@cp -rv $(zsh_tty_src) $(tty_dest)
+	@cp -v $(z_src) $(z_dest)
 
 zsh-clean:
 	$(info CLEANING ZSH)

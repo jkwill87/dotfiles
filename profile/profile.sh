@@ -47,7 +47,6 @@ fi
 # add user bin directories to PATH
 [ -d '/usr/local/opt' ] && PATH="usr/local/opt:$PATH"
 [ -d '/usr/local/opt/llvm/bin' ] && PATH="/usr/local/opt/llvm/bin:$PATH"
-[ -d '/usr/share' ] && PATH="/usr/share:$PATH"
 [ -d 'usr/local/bin/' ] && PATH="usr/local/bin/:$PATH"
 [ -d "${HOME}/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "${HOME}/.node_modules/bin" ] && PATH="${HOME}/.node_modules/bin:$PATH"
