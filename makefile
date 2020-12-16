@@ -117,17 +117,12 @@ lint-clean:
 
 tmux_rc_src := ./tmux/tmux.conf
 tmux_rc_dest := ${HOME}/.tmux.conf
-tmux_script_src := $(wildcard ./tmux/*.bash)
-tmux_script_dest := ${HOME}/.config/tmux
 
 tmux:
 	cp $(tmux_rc_src) $(tmux_rc_dest)
-	mkdir -p $(tmux_script_dest)
-	cp $(tmux_script_src) $(tmux_script_dest)
-	chmod +x $(tmux_script_dest)/*
 
 tmux-clean:
-	rm -rvf $(tmux_rc_dest) ${tmux_script_dest}
+	rm -rvf $(tmux_rc_dest)
 
 .PHONY: tmux
 
