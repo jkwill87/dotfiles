@@ -141,7 +141,8 @@ plug_dest := ${HOME}/.vim/autoload/plug.vim
 
 vim-plug:
 	-curl --max-time 5 --retry 2 -Lo $(plug_dest) --create-dirs $(plug_src)
-	-vim -E -s -u $(vimrc_src) +PlugInstall +qa
+	-vim +PlugClean +qa
+	-vim +PlugInstall +qa
 
 nvim_dir := ${HOME}/.config/nvim
 nvimrc_src := ./vim/nvim.conf
