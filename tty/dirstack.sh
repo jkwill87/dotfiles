@@ -24,14 +24,18 @@ cdd() {
         echo 'Dirstack empty :('
     elif [ $# -eq 0 ]; then
         # print dirstack entries when called w/o arguments
-        line=1
-        while read -r dirstack; do
-            tput bold
-            printf "  %s" $line
-            tput sgr0
-            echo ". $dirstack"
-            line=$((line + 1))
-        done </"$DIRSTACK_FILE"
+        if exists fzf; then
+            cd $(cat ${HOME}/.dirstack | fzf --reverse)
+        else
+            line=1
+            while read -r dirstack; do
+                tput bold
+                printf "  %s" $line
+                tput sgr0
+                echo ". $dirstack"
+                line=$((line + 1))
+            done </"$DIRSTACK_FILE"
+        fi
     else
         line=$(printf "$1" | cut -c 1 | tr -d '[:alpha:]')
         line=${line:=0}
