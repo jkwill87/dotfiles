@@ -5,9 +5,7 @@
 
 # ------------------------------------------------------------------------------
 
-exists() {
-    if hash "$1" 2>/dev/null; then return 0; else return 1; fi
-}
+export _PROFILE_LOADED=1
 
 # determine platform
 case $(uname) in
@@ -107,7 +105,7 @@ export LS_COLORS='di=1:ln=36:so=36:pi=36:ex=35:bd=37;44:cd=34:su=34:sg=34:tw=1;1
 
 # fzf
 if exists 'fd'; then
-    export FZF_DEFAULT_COMMAND='fd --type f --exclude node_modules'
+    export FZF_DEFAULT_COMMAND='fd --hidden'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 

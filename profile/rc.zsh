@@ -89,3 +89,6 @@ if exists 'fortune'; then
     fortune
     echo
 fi
+
+# z
+[ -r "$HOME/.z.bash" ] && source "$HOME/.z.bash"
