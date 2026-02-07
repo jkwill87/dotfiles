@@ -1,0 +1,351 @@
+format = """
+$username\
+[@](fg:cyan)\
+$hostname\
+[:](fg:cyan)\
+$directory\
+$git_branch\
+$git_state\
+$git_status \
+$docker_context\
+$c\
+$cmake\
+$cobol\
+$deno\
+$dotnet\
+$elixir\
+$erlang\
+$fennel\
+$gleam\
+$golang\
+$helm\
+$java\
+$lua\
+$nim\
+$nodejs\
+$perl\
+$php\
+$python\
+$ruby\
+$rust\
+$terraform\
+$zig\
+$gcloud\
+$direnv\
+$env_var\
+$crystal\
+$sudo\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Wait 10 milliseconds for starship to check files under the current directory
+# scan_timeout = 10
+
+# Disable the blank line at the start of the prompt
+add_newline = true
+
+# Set custom color palette
+palette = "starship_custom"
+
+# Define custom colors
+[palettes.starship_custom]
+blue = "#005fff"
+cyan = "#00d7ff"
+turquoise = "#00ffff"
+yellow = "#ecbe7b"
+purple = "#9f48f3"
+magenta = "#ff5c8a"
+red = "#ff6655"
+green = "#99bb66"
+
+[username]
+style_user = "fg:blue"
+style_root = "fg:purple"
+format = "[$user]($style)"
+show_always = true
+
+[hostname]
+style = "fg:cyan"
+ssh_only = false
+format = "[$hostname]($style)"
+
+[directory]
+style = "fg:cyan"
+read_only = " ro"
+truncation_length = 3
+truncate_to_repo = true
+
+[character]
+success_symbol = "[❯](fg:purple)"
+error_symbol = "[❯](fg:red)"
+vimcmd_symbol = "[❮](fg:green)"
+
+[git_branch]
+format = "[$branch]($style)"
+symbol = "git "
+style = "fg:turquoise"
+
+[git_status]
+format = '([\[](dimmed)[$all_status$ahead_behind]($style)[\] ](dimmed))'
+conflicted = "!"
+untracked = "?"
+modified = "+"
+staged = "*"
+renamed = ">"
+deleted = "x"
+style = "fg:magenta"
+ignore_submodules = true  # Skip submodule checks
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+# plaintext symbols
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "fg:yellow"
+
+[git_commit]
+tag_symbol = " tag "
+
+[aws]
+disabled = true
+
+[azure]
+disabled = true
+
+[buf]
+disabled = true
+
+[bun]
+symbol = "bun "
+
+[c]
+symbol = "C "
+
+[cpp]
+symbol = "C++ "
+
+[cobol]
+disabled = true
+
+[conda]
+disabled = true
+
+[container]
+symbol = "container "
+
+[crystal]
+disabled = true
+
+[cmake]
+symbol = "cmake "
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[docker_context]
+symbol = "docker "
+
+[elixir]
+symbol = "exs "
+
+[elm]
+disabled = true
+
+[fennel]
+disabled = true
+
+[fossil_branch]
+disabled = true
+
+[gcloud]
+symbol = "gcp "
+disabled = true
+
+[gleam]
+symbol = "gleam "
+
+[golang]
+symbol = "go "
+
+[gradle]
+disabled = true
+
+[guix_shell]
+disabled = true
+
+[haskell]
+disabled = true
+
+[helm]
+symbol = "helm "
+
+[hg_branch]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[lua]
+symbol = "lua "
+
+[nodejs]
+symbol = "nodejs "
+
+[memory_usage]
+disabled = true
+
+[meson]
+disabled = true
+
+[nats]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[opa]
+disabled = true
+
+[os.symbols]
+AIX = "aix "
+Alpaquita = "alq "
+AlmaLinux = "alma "
+Alpine = "alp "
+Amazon = "amz "
+Android = "andr "
+Arch = "rch "
+Artix = "atx "
+Bluefin = "blfn "
+CachyOS = "cach "
+CentOS = "cent "
+Debian = "deb "
+DragonFly = "dfbsd "
+Emscripten = "emsc "
+EndeavourOS = "ndev "
+Fedora = "fed "
+FreeBSD = "fbsd "
+Garuda = "garu "
+Gentoo = "gent "
+HardenedBSD = "hbsd "
+Illumos = "lum "
+Kali = "kali "
+Linux = "lnx "
+Mabox = "mbox "
+Macos = "mac "
+Manjaro = "mjo "
+Mariner = "mrn "
+MidnightBSD = "mid "
+Mint = "mint "
+NetBSD = "nbsd "
+NixOS = "nix "
+Nobara = "nbra "
+OpenBSD = "obsd "
+OpenCloudOS = "ocos "
+openEuler = "oeul "
+openSUSE = "osuse "
+OracleLinux = "orac "
+Pop = "pop "
+Raspbian = "rasp "
+Redhat = "rhl "
+RedHatEnterprise = "rhel "
+RockyLinux = "rky "
+Redox = "redox "
+Solus = "sol "
+SUSE = "suse "
+Ubuntu = "ubnt "
+Ultramarine = "ultm "
+Unknown = "unk "
+Uos = "uos "
+Void = "void "
+Windows = "win "
+
+[package]
+symbol = "pkg "
+
+[perl]
+symbol = "pl "
+
+[php]
+symbol = "php "
+
+[pijul_channel]
+symbol = "pijul "
+
+[pixi]
+symbol = "pixi "
+
+[pulumi]
+symbol = "pulumi "
+
+[purescript]
+symbol = "purs "
+
+[python]
+symbol = "py "
+
+[quarto]
+symbol = "quarto "
+
+[raku]
+symbol = "raku "
+
+[rlang]
+symbol = "r "
+
+[ruby]
+symbol = "rb "
+
+[rust]
+symbol = "rs "
+
+[scala]
+symbol = "scala "
+
+[spack]
+symbol = "spack "
+
+[solidity]
+symbol = "solidity "
+
+[status]
+symbol = "[x](bold red) "
+
+[sudo]
+symbol = "sudo "
+
+[swift]
+symbol = "swift "
+
+[typst]
+symbol = "typst "
+
+[terraform]
+symbol = "terraform "
+
+[zig]
+symbol = "zig "
