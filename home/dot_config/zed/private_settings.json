@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "session": {
+    "trust_all_worktrees": true
+  },
   "edit_predictions": {
     "provider": "copilot",
     "mode": "subtle"
