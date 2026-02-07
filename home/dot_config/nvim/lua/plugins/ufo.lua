@@ -5,21 +5,6 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = false
 vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:▶]]
 
--- Status column (fold icons, line numbers, signs)
-local builtin = require('statuscol.builtin')
-require('statuscol').setup {
-  relculright = true,
-  segments = {
-    { text = { builtin.foldfunc }, click = 'v:lua.ScFa' },
-    {
-      text = { builtin.lnumfunc, ' ' },
-      condition = { true, builtin.not_empty },
-      click = 'v:lua.ScLa',
-    },
-    { text = { '%s' }, click = 'v:lua.ScSa' },
-  },
-}
-
 -- Fold virtual text: show line count suffix after collapsed folds
 require('ufo').setup {
   fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)

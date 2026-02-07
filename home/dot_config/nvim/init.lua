@@ -29,7 +29,7 @@ require('options')
 -- Plugin configurations
 require('plugins.barbar')
 require('plugins.treesitter')
-require('plugins.telescope')
+require('plugins.snacks')
 require('plugins.ufo')
 require('plugins.lsp')
 require('plugins.copilot')
@@ -43,15 +43,6 @@ require('mason').setup { ui = { check_outdated_packages_on_open = false } }
 require('auto-session').setup {
   log_level = 'error',
   suppressed_dirs = { '~/' },
-}
-
-require('nvim-cursorline').setup {
-  cursorline = { enable = false },
-  cursorword = {
-    enable = true,
-    min_length = 3,
-    hl = { underline = true },
-  },
 }
 
 vim.o.timeout = true
