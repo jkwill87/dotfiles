@@ -44,9 +44,6 @@ else
 fi
 
 # add user bin directories to PATH
-[ -d '/usr/local/opt' ] && PATH="usr/local/opt:$PATH"
-[ -d '/usr/local/opt/llvm/bin' ] && PATH="/usr/local/opt/llvm/bin:$PATH"
-[ -d 'usr/local/bin/' ] && PATH="usr/local/bin/:$PATH"
 [ -d "${HOME}/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "${HOME}/.node_modules/bin" ] && PATH="${HOME}/.node_modules/bin:$PATH"
 [ -d "${HOME}/.rbenv/bin" ] && PATH="${HOME}/.rbenv/bin:$PATH"
@@ -59,17 +56,8 @@ export PATH
 [ -d "$HOME/share" ] && XDG_DATA_DIRS="$HOME/share:$XDG_DATA_DIRS"
 [ -d "$HOME/include" ] && C_INCLUDE_PATH="$HOME/include:$C_INCLUDE_PATH"
 
-# macos specific stuff
-if [ $PLATFORM = macos ]; then
-    if [ -d '/usr/local/opt/llvm' ]; then
-        export PATH="/usr/local/opt/llvm/bin:$PATH"
-        export LDFLAGS="-L/usr/local/opt/llvm/lib"
-        export CPPFLAGS="-I/usr/local/opt/llvm/include"
-    fi
-fi
-
 # editor
-if exists 'vim'; then
+if command -v vim >/dev/null 2>&1; then
     export EDITOR=vim
 else
     export EDITOR=vi
@@ -92,7 +80,7 @@ if [ -e "$HOME/Sync" ]; then
 fi
 
 # coreutils
-if exists 'gls'; then
+if command -v gls >/dev/null 2>&1; then
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     export COREUTILS=1
@@ -104,7 +92,7 @@ export LSCOLORS='HxfxgxgxexexexexexExEx'
 export LS_COLORS='di=1:ln=36:so=36:pi=36:ex=35:bd=37;44:cd=34:su=34:sg=34:tw=1;1:ow=1'
 
 # fzf
-if exists 'fd'; then
+if command -v fd >/dev/null 2>&1; then
     export FZF_DEFAULT_COMMAND='fd --hidden'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi

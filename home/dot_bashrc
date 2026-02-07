@@ -14,11 +14,6 @@ source ~/.profile
 # bash completions
 bash_completion_path='/usr/share/bash-completion/bash_completion'
 [ -f "$bash_completion_path" ] && source "$bash_completion_path"
-if exists brew; then
-    if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-        source "$(brew --prefix)/etc/bash_completion"
-    fi
-fi
 
 # history
 shopt -s histappend
@@ -37,6 +32,9 @@ if [ -d "$HOME/.config/tty" ]; then
     done
     unset file
 fi
+
+# mise
+command -v mise >/dev/null 2>&1 && eval "$(mise activate bash)"
 
 # fzf
 [ -r "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"

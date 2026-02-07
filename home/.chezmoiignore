@@ -1,5 +1,21 @@
+{{- if ne .chezmoi.os "darwin" }}
+.config/tty/homebrew.sh
+.config/tty/darwin.sh
+{{- end }}
+
 {{- if ne .chezmoi.os "linux" }}
 .config/tty/pacman.sh
+.config/tty/linux.sh
+.config/tty/debian.sh
 {{- end }}
+
+{{- if and (eq .chezmoi.os "linux") (ne .chezmoi.osRelease.id "arch") }}
+.config/tty/pacman.sh
+{{- end }}
+
+{{- if and (eq .chezmoi.os "linux") (not (or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu"))) }}
+.config/tty/debian.sh
+{{- end }}
+
 .config/fish/fish_variables
 README.md

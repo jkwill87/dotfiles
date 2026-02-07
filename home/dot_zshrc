@@ -23,8 +23,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^ ' autosuggest-execute
 
 # zsh completions
-[ -d "/usr/local/share/zsh-completions" ] && fpath+=("/usr/local/share/zsh-completions")
-exists 'rustc' && [ -d "$(rustc --print sysroot)/share/zsh/site-functions" ] && fpath+=("$(rustc --print sysroot)/share/zsh/site-functions")
+command -v rustc >/dev/null 2>&1 && [ -d "$(rustc --print sysroot)/share/zsh/site-functions" ] && fpath+=("$(rustc --print sysroot)/share/zsh/site-functions")
 setopt correctall
 SPROMPT="Correct $fg[blue]%R$reset_color to $fg[blue]%r?$reset_color [y/n/e/a] "
 
@@ -71,6 +70,9 @@ if [ -d $HOME/.config/tty ]; then
     unset file
 fi
 
+# mise
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
+
 # prompt
 function precmd() {
     if [ ! -z $VIRTUAL_ENV ]; then
@@ -84,7 +86,7 @@ autoload -Uz colors promptinit
 colors
 
 # fortune
-if exists 'fortune'; then
+if command -v fortune >/dev/null 2>&1; then
     fortune
     echo
 fi
