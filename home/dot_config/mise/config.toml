@@ -1,12 +1,10 @@
 [tools]
-elixir = "1.18.4-otp-28"
-erlang = "28.0.2"
-neovim = "latest"
 starship = "latest"
 fzf = "latest"
 fd = "latest"
 ripgrep = "latest"
 zoxide = "latest"
+gum = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
