@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+function is_excluded() {
+    grep -q "$1" .git/info/exclude
+}
+
+function is_untracked() {
+    git ls-files -v | grep '^[a-z]' | cut -c3- | grep -q "$1"
+}
+
+function track() {
+    git update-index --no-assume-unchanged "$1"
+}
+
+function untrack() {
+    git update-index --assume-unchanged "$1"
+}
+
+function exclude() {
+    echo "$1" >>.git/info/exclude
+}
+
+function unexclude() {
+    awk -v file="$1" '$0 != file' .git/info/exclude >.git/info/exclude.tmp
+    mv .git/info/exclude.tmp .git/info/exclude
+}
+
+function do_forget() {
+    echo "forgetting $1"
+    if is_untracked "$1"; then
+        echo " - already untracked"
+    else
+        echo " - untracking"
+        untrack "$1"
+    fi
+    if is_excluded "$1"; then
+        echo " - already excluded"
+    else
+        echo " - excluding"
+        exclude "$1"
+    fi
+}
+
+function do_remember() {
+    echo "remembering $1"
+    if is_untracked "$1"; then
+        echo " - tracking"
+        track "$1"
+    else
+        echo " - already tracked"
+    fi
+    if is_excluded "$1"; then
+        echo " - unexcluding"
+        unexclude "$1"
+    else
+        echo " - already unexcluded"
+    fi
+}
+
+function do_list() {
+    untracked=$(git ls-files --others --exclude-standard)
+    if [ -n "$untracked" ]; then
+        echo 'untracked files:'
+        for file in $untracked; do
+            echo " - $file"
+        done
+    else
+        echo 'no untracked files'
+    fi
+    echo
+    excluded=$(git ls-files -v | grep '^[a-z]' | cut -c3- | sort)
+    if [ -n "$excluded" ]; then
+        echo 'excluded files:'
+        for file in $excluded; do
+            echo " - $file"
+        done
+    else
+        echo 'no excluded files'
+    fi
+}
+
+#
+# entrypoint
+#
+
+# exit early if not in a git repo
+if [ ! -d .git ]; then
+    echo 'error: not in a git repository'
+    exit 1
+fi
+
+# list untracked and excluded files if no arguments
+if [ $# -eq 0 ]; then
+    do_list
+    exit 0
+fi
+
+# run all positional arguments
+if [ "$1" = '--remember' ]; then
+    shift
+    for file in "$@"; do do_remember "$file"; done
+else
+    for file in "$@"; do do_forget "$file"; done
+fi
