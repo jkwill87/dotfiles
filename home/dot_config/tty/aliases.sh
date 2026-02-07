@@ -21,8 +21,8 @@ if [ "$PLATFORM" = linux ] && exists 'xclip'; then
     alias pbpaste="xclip -selection clipboard -o"
 fi
 
-# # editor
-# exists 'nvim' && alias vim='nvim'
+# editor
+exists 'nvim' && alias vim='nvim'
 
 # git
 alias gl="git log --pretty=oneline --no-merges --abbrev-commit"
@@ -32,3 +32,6 @@ alias ga="git commit --ammend --no-edit"
 if exists 'fdfind'; then
     alias fd='fdfind'
 fi
+
+# clear screen and scrollback
+alias clear!="clear && printf '\e[3J'"

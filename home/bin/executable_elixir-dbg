@@ -1,0 +1,2 @@
+#!/bin/sh
+iex --dbg pry -S mix phx.server
