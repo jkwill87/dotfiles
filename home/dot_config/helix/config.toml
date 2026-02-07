@@ -1,0 +1,17 @@
+theme = "kanagawa"
+
+[editor]
+auto-format = false
+rulers = [80, 100]
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[keys.normal]
+C-a = "goto_line_start"
