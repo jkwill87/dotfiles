@@ -8,10 +8,8 @@
 // from the command palette or from `Zed` application menu.
 {
   "edit_predictions": {
+    "provider": "copilot",
     "mode": "subtle"
-  },
-  "features": {
-    "edit_prediction_provider": "copilot"
   },
   "title_bar": {
     "show_menus": false,
@@ -21,9 +19,18 @@
   "wrap_guides": [100, 120],
   "use_system_window_tabs": true,
   "auto_install_extensions": {
+    "color-highlight": true,
+    "dockerfile": true,
+    "elixir": true,
+    "erlang": true,
     "fish": true,
+    "html": true,
+    "make": true,
+    "nu": true,
+    "ruff": true,
+    "sql": true,
     "toml": true,
-    "nushell": true
+    "vscode-dark-modern": true
   },
   "ssh_connections": [
     {
