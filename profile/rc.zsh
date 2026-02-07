@@ -7,10 +7,7 @@
 
 # if not running interactively, don't do anything else
 [[ $- != *i* ]] && return
-
-# only load once per session
-[ -z "$_ZSH_RC_LOADED" ] || [ -n "$_RELOAD_RC" ] || return
-_ZSH_RC_LOADED=1
+source ~/.profile
 
 # key binding
 bindkey -e
@@ -26,19 +23,21 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^ ' autosuggest-execute
 
 # zsh completions
-zsh_completion_path='/usr/local/share/zsh-completions'
-[ -d "$zsh_completion_path" ] && fpath+=("$zsh_completion_path")
+[ -d "/usr/local/share/zsh-completions" ] && fpath+=("/usr/local/share/zsh-completions")
+exists 'rustc' && [ -d "$(rustc --print sysroot)/share/zsh/site-functions" ] && fpath+=("$(rustc --print sysroot)/share/zsh/site-functions")
 setopt correctall
 SPROMPT="Correct $fg[blue]%R$reset_color to $fg[blue]%r?$reset_color [y/n/e/a] "
-alias sudo='nocorrect sudo'
-
-# autocomplete
 
 autoload -U compinit
 compinit -u
 zstyle ':completion:*' menu select
+alias sudo='nocorrect sudo'
+alias cargo='nocorrect cargo'
 
 # history
+setopt histignorespace
+setopt histnofunctions
+setopt histreduceblanks
 setopt incappendhistory
 
 # fzf

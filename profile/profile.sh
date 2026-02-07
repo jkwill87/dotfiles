@@ -5,7 +5,8 @@
 
 # ------------------------------------------------------------------------------
 
-export _PROFILE_LOADED=1
+# [ -z "$_PROFILE_LOADED" ] || return
+# export _PROFILE_LOADED=1
 
 # determine platform
 case $(uname) in
@@ -86,7 +87,6 @@ esac
 export DL="$HOME/Downloads"
 if [ -e "$HOME/Sync" ]; then
     export SYNC="$HOME/Sync"
-    export HW="$SYNC/School"
     export DEV="$SYNC/Development"
     export DOT="$DEV/dotfiles"
 fi
