@@ -113,7 +113,3 @@ fi
 [ -t 0 ] && stty -ixon
 
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
-
-{{- if stat (joinPath .chezmoi.homeDir ".local/share/JetBrains/Toolbox/scripts") }}
-export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
-{{- end }}
