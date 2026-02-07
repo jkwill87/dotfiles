@@ -1,6 +1,7 @@
 {{- if ne .chezmoi.os "darwin" }}
 .config/tty/homebrew.sh
 .config/tty/darwin.sh
+.config/fish/conf.d/erlang.fish
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
