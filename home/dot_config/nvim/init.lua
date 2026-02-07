@@ -11,6 +11,10 @@ local disabled_builtins = {
   'tutor',
   'zipPlugin',
 }
+local disabled_providers = { 'perl', 'ruby' }
+for _, provider in ipairs(disabled_providers) do
+  vim.g['loaded_' .. provider .. '_provider'] = 0
+end
 for _, plugin in ipairs(disabled_builtins) do
   vim.g['loaded_' .. plugin] = 1
 end
@@ -38,7 +42,7 @@ require('mason').setup { ui = { check_outdated_packages_on_open = false } }
 
 require('auto-session').setup {
   log_level = 'error',
-  auto_session_suppress_dirs = { '~/' },
+  suppressed_dirs = { '~/' },
 }
 
 require('nvim-cursorline').setup {
