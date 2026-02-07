@@ -1,0 +1,28 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "darwin" -}}
+# Install Homebrew if missing
+if ! command -v brew >/dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+brew bundle --file=/dev/stdin <<EOF
+brew "fish"
+brew "neovim"
+brew "tmux"
+brew "starship"
+brew "fzf"
+brew "fd"
+brew "ripgrep"
+brew "zoxide"
+brew "mise"
+EOF
+{{ else if eq .chezmoi.os "linux" -}}
+# Linux package installation (adjust for distro)
+if command -v pacman >/dev/null; then
+  sudo pacman -S --needed fish neovim tmux starship fzf fd ripgrep zoxide
+fi
+{{ end -}}
+
+# Install fisher (fish plugin manager)
+if command -v fish >/dev/null && ! fish -c "type -q fisher" 2>/dev/null; then
+  fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+fi

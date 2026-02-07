@@ -1,0 +1,16 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-`": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    // go back
+    "context": "Editor",
+    "bindings": {
+      "cmd-[": "pane::GoBack",
+      "cmd-]": "pane::GoForward"
+    }
+  }
+]

@@ -1,0 +1,17 @@
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+
+[color]
+	ui = auto
+
+[core]
+	autocrlf = false
+	eol = lf
+	excludesfile = {{ joinPath .chezmoi.homeDir ".gitignore" }}
+
+[init]
+	defaultBranch = main
+
+[push]
+	default = current

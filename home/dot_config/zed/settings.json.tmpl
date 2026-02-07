@@ -1,0 +1,89 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "auto_install_extensions": {
+    "fish": true,
+    "toml": true,
+    "nushell": true
+  },
+  "ssh_connections": [
+    {
+      "host": "node.lan",
+      "projects": [
+        {
+          "paths": ["/home/sysadmin"]
+        }
+      ]
+    }
+  ],
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "always_allow_tool_actions": true,
+    "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "copy_path": true,
+          "create_directory": true,
+          "create_file": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "terminal": true,
+          "thinking": true,
+          "web_search": true,
+          "open": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {}
+      }
+    },
+    "default_profile": "write",
+    "model_parameters": [],
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
+  "theme": "VSCode Dark Modern",
+  "vim_mode": false,
+  "ui_font_size": 15,
+  "buffer_font_size": 14,
+  "buffer_font_family": "JetBrains Mono",
+  "gutter": {
+    // "line_numbers": false,
+    // "code_actions": false,
+    // "folds": false,
+    "runnables": false,
+    "breakpoints": false
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "languages": {
+    "Plain Text": {
+      "show_edit_predictions": false
+    }
+  }
+}
