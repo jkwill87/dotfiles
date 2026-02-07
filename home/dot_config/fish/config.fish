@@ -1,3 +1,3 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    command -v mise >/dev/null 2>&1; and mise activate fish | source
 end
