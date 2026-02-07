@@ -1,0 +1,5 @@
+{{- if ne .chezmoi.os "linux" }}
+.config/tty/pacman.sh
+{{- end }}
+.config/fish/fish_variables
+README.md
