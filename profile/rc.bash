@@ -7,10 +7,9 @@
 
 # if not running interactively, don't do anything else
 [[ $- != *i* ]] && return
+source ~/.profile
 
 # only load once per session
-[ -z "$_BASH_RC_LOADED" ] || [ -n "$_RELOAD_RC" ] || return
-_BASH_RC_LOADED=1
 
 # bash completions
 bash_completion_path='/usr/share/bash-completion/bash_completion'
@@ -32,7 +31,7 @@ shopt -s nocaseglob
 shopt -s nocasematch
 
 # source shell scripts
-if [ -d $HOME/.config/tty ]; then
+if [ -d "$HOME/.config/tty" ]; then
     for file in "$HOME"/.config/tty/*.{sh,bash}; do
         source "$file"
     done
