@@ -6,6 +6,7 @@ ripgrep = "latest"
 zoxide = "latest"
 gum = "latest"
 node = "latest"
+"npm:tree-sitter-cli" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]

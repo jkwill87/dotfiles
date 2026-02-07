@@ -46,4 +46,4 @@ vim.opt.listchars = {
 vim.o.list = true
 
 -- Sessions
-vim.o.sessionoptions = 'blank,buffers,curdir,folds,tabpages,winsize,winpos,terminal'
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
