@@ -1,8 +1,8 @@
 fish_add_path -g \
+    $HOME/bin \
     $HOME/.cargo/bin \
     $HOME/.local/bin \
     $HOME/.local/share/nvim/lsp_servers \
-    $HOME/bin \
     $HOME/go/bin \
     $PYENV_ROOT/bin \
     /opt/homebrew/bin \
