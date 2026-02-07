@@ -24,7 +24,7 @@ cdd() {
         echo 'Dirstack empty :('
     elif [ $# -eq 0 ]; then
         # print dirstack entries when called w/o arguments
-        if exists fzf; then
+        if command -v fzf >/dev/null 2>&1; then
             cd $(cat ${HOME}/.dirstack | fzf --reverse)
         else
             line=1

@@ -4,23 +4,25 @@
 if ! command -v brew >/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-brew bundle --file=/dev/stdin <<EOF
-brew "fish"
-brew "neovim"
-brew "tmux"
-brew "starship"
-brew "fzf"
-brew "fd"
-brew "ripgrep"
-brew "zoxide"
-brew "mise"
-EOF
-{{ else if eq .chezmoi.os "linux" -}}
-# Linux package installation (adjust for distro)
-if command -v pacman >/dev/null; then
-  sudo pacman -S --needed fish neovim tmux starship fzf fd ripgrep zoxide
+brew install fish tmux git curl mise coreutils
+
+{{ else if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") -}}
+sudo pacman -S --needed fish tmux git curl base-devel
+
+{{ else if or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu") -}}
+sudo apt-get update
+sudo apt-get install -y fish tmux git curl build-essential
+
+{{ end -}}
+{{- if ne .chezmoi.os "darwin" }}
+# Install mise on Linux
+if ! command -v mise >/dev/null; then
+  curl https://mise.run | sh
 fi
 {{ end -}}
+
+# Install CLI tools via mise
+mise install
 
 # Install fisher (fish plugin manager)
 if command -v fish >/dev/null && ! fish -c "type -q fisher" 2>/dev/null; then

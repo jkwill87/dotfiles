@@ -15,23 +15,12 @@ alias ~="cd ~"   # '~' to move to the home directory
 alias ping="ping -c 3"
 alias flush_dns="nscd -K && nscd"
 
-# xclip
-if [ "$PLATFORM" = linux ] && exists 'xclip'; then
-    alias pbcopy="xclip -selection clipboard"
-    alias pbpaste="xclip -selection clipboard -o"
-fi
-
 # editor
-exists 'nvim' && alias vim='nvim'
+command -v nvim >/dev/null 2>&1 && alias vim='nvim'
 
 # git
 alias gl="git log --pretty=oneline --no-merges --abbrev-commit"
-alias ga="git commit --ammend --no-edit"
-
-# fd
-if exists 'fdfind'; then
-    alias fd='fdfind'
-fi
+alias ga="git commit --amend --no-edit"
 
 # clear screen and scrollback
 alias clear!="clear && printf '\e[3J'"
