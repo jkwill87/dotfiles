@@ -10,7 +10,6 @@ vim.pack.add {
   -- UI
   gh .. 'romgrk/barbar.nvim',
   gh .. 'kyazdani42/nvim-web-devicons',
-  gh .. 'yamatsum/nvim-cursorline',
   gh .. 'NvChad/nvim-colorizer.lua',
 
   -- Git
@@ -20,12 +19,8 @@ vim.pack.add {
   gh .. 'nvim-treesitter/nvim-treesitter',
   gh .. 'RRethy/nvim-treesitter-endwise',
 
-  -- Fuzzy finder
-  gh .. 'nvim-telescope/telescope.nvim',
-  gh .. 'nvim-lua/plenary.nvim',
-  gh .. 'nvim-telescope/telescope-file-browser.nvim',
-  gh .. 'nvim-telescope/telescope-github.nvim',
-  gh .. 'nvim-telescope/telescope-ui-select.nvim',
+  -- Snacks (picker, explorer, etc.)
+  gh .. 'folke/snacks.nvim',
 
   -- LSP
   gh .. 'williamboman/mason.nvim',
@@ -36,7 +31,6 @@ vim.pack.add {
   -- Folding
   gh .. 'kevinhwang91/nvim-ufo',
   gh .. 'kevinhwang91/promise-async',
-  gh .. 'luukvbaal/statuscol.nvim',
 
   -- Editing
   gh .. 'windwp/nvim-autopairs',

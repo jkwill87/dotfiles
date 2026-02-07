@@ -30,14 +30,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bmap('gd', vim.lsp.buf.definition, 'Go to definition')
     bmap('gD', vim.lsp.buf.declaration, 'Go to declaration')
     bmap('gI', vim.lsp.buf.implementation, 'Go to implementation')
-    bmap('gr', require('telescope.builtin').lsp_references, 'References')
+    bmap('gr', function() Snacks.picker.lsp_references() end, 'References')
     bmap('K', vim.lsp.buf.hover, 'Hover documentation')
 
     -- Actions
     bmap('<Leader>lr', vim.lsp.buf.rename, 'Rename symbol')
     bmap('<Leader>la', vim.lsp.buf.code_action, 'Code action')
-    bmap('<Leader>ls', require('telescope.builtin').lsp_document_symbols, 'Document symbols')
-    bmap('<Leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace symbols')
+    bmap('<Leader>ls', function() Snacks.picker.lsp_symbols() end, 'Document symbols')
+    bmap('<Leader>lw', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace symbols')
 
     vim.api.nvim_buf_create_user_command(
       bufnr,
