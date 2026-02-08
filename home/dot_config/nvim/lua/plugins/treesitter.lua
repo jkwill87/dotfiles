@@ -1,3 +1,5 @@
+require'nvim-treesitter'.setup {}
+
 -- Enable treesitter highlighting for all filetypes with an available parser
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('TreesitterHighlight', {}),
@@ -8,6 +10,17 @@ vim.api.nvim_create_autocmd('FileType', {
     end
   end,
 })
+
+-- require("nvim-treesitter.configs").setup({
+--   -- Enable syntax highlighting
+--   highlight = {
+--     enable = true,
+--     -- Optionally disable treesitter highlighting for certain filetypes
+--     -- disable = { "c", "rust" },
+--   },
+--   -- Enable indentation
+--   indent = { enable = true },
+-- })
 
 -- Endwise: auto-close blocks in Ruby, Lua, etc.
 require('nvim-treesitter-endwise').init()
