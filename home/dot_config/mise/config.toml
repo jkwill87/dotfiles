@@ -1,12 +1,13 @@
 [tools]
-starship = "latest"
-fzf = "latest"
+chezmoi = "latest"
 fd = "latest"
-ripgrep = "latest"
-zoxide = "latest"
+fzf = "latest"
 gum = "latest"
-node = "latest"
-"npm:tree-sitter-cli" = "latest"
+lua-language-server = "latest"
+node = "24"
+ripgrep = "latest"
+starship = "latest"
+zoxide = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
