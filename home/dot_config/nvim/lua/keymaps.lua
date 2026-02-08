@@ -1,5 +1,9 @@
 local map = vim.keymap.set
 
+-- Command-line
+map('c', '<C-a>', '<Home>', { desc = 'Move to beginning of line' })
+map('c', '<C-e>', '<End>', { desc = 'Move to end of line' })
+
 -- Splits
 map('n', '<C-=>', '<Cmd>only<CR>', { desc = 'Close all other windows' })
 map('n', '<C-->', '<Cmd>split<CR>', { desc = 'Split horizontally' })
