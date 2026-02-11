@@ -1,6 +1,17 @@
+{{- $sshPubKey := "" -}}
+{{- range list "id_ed25519.pub" "id_ecdsa.pub" "id_rsa.pub" -}}
+{{-   $path := joinPath $.chezmoi.homeDir ".ssh" . -}}
+{{-   if and (not $sshPubKey) (stat $path) -}}
+{{-     $sshPubKey = $path -}}
+{{-   end -}}
+{{- end -}}
+
 [user]
 	name = {{ .name }}
 	email = {{ .email }}
+{{- if $sshPubKey }}
+	signingkey = {{ $sshPubKey }}
+{{- end }}
 
 [color]
 	ui = auto
@@ -15,3 +26,14 @@
 
 [push]
 	default = current
+{{- if $sshPubKey }}
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+
+[gpg "ssh"]
+	allowedSignersFile = {{ joinPath .chezmoi.homeDir ".ssh" "allowed_signers" }}
+{{- end }}
