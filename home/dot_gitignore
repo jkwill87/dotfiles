@@ -1,3 +1,4 @@
-**/*.envrc
-.claude/
-CLAUDE.md
+.notes/
+.worktrees/
+.zed
+docker-compose.override.yaml
