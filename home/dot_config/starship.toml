@@ -4,9 +4,9 @@ $username\
 $hostname\
 [:](fg:cyan)\
 $directory\
-$git_branch\
+($git_branch\
 $git_state\
-$git_status \
+$git_status )\
 $docker_context\
 $c\
 $cmake\
@@ -88,7 +88,7 @@ symbol = "git "
 style = "fg:turquoise"
 
 [git_status]
-format = '([\[](dimmed)[$all_status$ahead_behind]($style)[\] ](dimmed))'
+format = '([\[](dimmed)[$all_status$ahead_behind]($style)[\]](dimmed))'
 conflicted = "!"
 untracked = "?"
 modified = "+"
