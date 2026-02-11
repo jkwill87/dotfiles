@@ -69,6 +69,7 @@ show_always = true
 style = "fg:cyan"
 ssh_only = false
 format = "[$hostname]($style)"
+aliases = { "PINTWSDR6XXF2NCG" = "thescore" }
 
 [directory]
 style = "fg:cyan"
