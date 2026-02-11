@@ -7,33 +7,43 @@
 {{- end -}}
 
 [user]
-	name = {{ .name }}
-	email = {{ .email }}
+  name = {{ .name }}
+  email = {{ .email }}
 {{- if $sshPubKey }}
-	signingkey = {{ $sshPubKey }}
+  signingkey = {{ $sshPubKey }}
 {{- end }}
 
 [color]
-	ui = auto
+  ui = auto
 
 [core]
-	autocrlf = false
-	eol = lf
-	excludesfile = {{ joinPath .chezmoi.homeDir ".gitignore" }}
+  autocrlf = false
+  eol = lf
+  excludesfile = {{ joinPath .chezmoi.homeDir ".gitignore" }}
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 [push]
-	default = current
+  default = current
 {{- if $sshPubKey }}
 
 [gpg]
-	format = ssh
+  format = ssh
 
 [commit]
-	gpgsign = true
+  gpgsign = true
 
 [gpg "ssh"]
-	allowedSignersFile = {{ joinPath .chezmoi.homeDir ".ssh" "allowed_signers" }}
+  allowedSignersFile = {{ joinPath .chezmoi.homeDir ".ssh" "allowed_signers" }}
+{{- end }}
+{{- if lookPath "gh" }}
+
+[credential "https://github.com"]
+  helper =
+  helper = !{{ lookPath "gh" }} auth git-credential
+
+[credential "https://gist.github.com"]
+  helper =
+  helper = !{{ lookPath "gh" }} auth git-credential
 {{- end }}
