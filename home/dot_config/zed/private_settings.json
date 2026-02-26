@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "git_panel": {
+    "tree_view": false
+  },
   "disable_ai": true,
   "session": {
     "trust_all_worktrees": true
@@ -47,12 +50,14 @@
     }
   ],
   "agent": {
+    "tool_permissions": {
+      "default": "allow"
+    },
     "enable_feedback": false,
     "inline_assistant_model": {
       "provider": "copilot_chat",
       "model": "gpt-4o"
     },
-    "always_allow_tool_actions": true,
     "profiles": {
       "write": {
         "name": "Write",
