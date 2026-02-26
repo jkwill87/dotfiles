@@ -40,6 +40,28 @@ require('nvim-autopairs').setup()
 require('nvim-surround').setup()
 require('mason').setup { ui = { check_outdated_packages_on_open = false } }
 
+local mason_ensure_installed = {
+  'lua-language-server',
+  'typescript-language-server',
+  'json-lsp',
+  'jq-lsp',
+  'rust-analyzer',
+  'marksman',
+  'fish-lsp',
+  'tombi',
+  'shfmt',
+  'shellcheck',
+}
+local registry = require('mason-registry')
+registry.refresh(function()
+  for _, name in ipairs(mason_ensure_installed) do
+    local ok, pkg = pcall(registry.get_package, name)
+    if ok and not pkg:is_installed() then
+      pkg:install()
+    end
+  end
+end)
+
 require('auto-session').setup {
   log_level = 'error',
   suppressed_dirs = { '~/' },

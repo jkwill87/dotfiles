@@ -16,7 +16,17 @@ vim.lsp.config('*', {
   },
 })
 
-vim.lsp.enable { 'lua_ls', 'ts_ls', 'jsonls', 'expert', 'jq' }
+vim.lsp.enable {
+  'lua_ls',
+  'ts_ls',
+  'jsonls',
+  'expert',
+  'jq',
+  'rust_analyzer',
+  'marksman',
+  'fish_lsp',
+  'tombi',
+}
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('LspKeymaps', {}),
