@@ -33,6 +33,7 @@ require('plugins.snacks')
 require('plugins.ufo')
 require('plugins.lsp')
 require('plugins.copilot')
+require('plugins.conform')
 
 -- Inline plugin setups (no custom config needed)
 require('gitsigns').setup()
@@ -51,6 +52,7 @@ local mason_ensure_installed = {
   'tombi',
   'shfmt',
   'shellcheck',
+  'prettier',
 }
 local registry = require('mason-registry')
 registry.refresh(function()

@@ -12,6 +12,10 @@
       "rev": "aa9a5cebebdbfa449c1c5ff229ba5d98e66bafed",
       "src": "https://github.com/coder/claudecode.nvim"
     },
+    "conform.nvim": {
+      "rev": "e969e302bced7ffb9a0a0323629f31feb0ca35a6",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "copilot.lua": {
       "rev": "3faffefbd6ddeb52578535ec6b730e0b72d7fd1a",
       "src": "https://github.com/zbirenbaum/copilot.lua"

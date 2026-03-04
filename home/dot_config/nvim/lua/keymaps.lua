@@ -30,4 +30,4 @@ map('n', '<Leader>b=', '<Cmd>BufferCloseAllButPinned<CR>', { desc = 'Close unpin
 map('n', '<A-Space>', '<Cmd>BufferPick<CR>', { desc = 'Pick buffer' })
 
 -- LSP
-map('n', '<Leader>f', vim.lsp.buf.format, { desc = 'Format buffer' })
+map('n', '<Leader>f', function() require('conform').format { lsp_fallback = true } end, { desc = 'Format buffer' })

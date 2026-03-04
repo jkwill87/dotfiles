@@ -52,8 +52,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.api.nvim_buf_create_user_command(
       bufnr,
       'Format',
-      function() vim.lsp.buf.format() end,
-      { desc = 'Format current buffer with LSP' }
+      function() require('conform').format { lsp_fallback = true } end,
+      { desc = 'Format current buffer' }
     )
 
     -- Native completion

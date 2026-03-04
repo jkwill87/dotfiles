@@ -43,6 +43,9 @@ vim.pack.add {
   -- Keymap hints
   gh .. 'folke/which-key.nvim',
 
+  -- Formatting
+  gh .. 'stevearc/conform.nvim',
+
   -- Commands
   gh .. 'tpope/vim-eunuch',
 
