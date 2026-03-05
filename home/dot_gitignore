@@ -3,4 +3,5 @@
 .notes/
 .worktrees/
 .zed
+CLAUDE.local.md
 docker-compose.override.yaml
