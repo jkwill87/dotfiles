@@ -26,6 +26,7 @@ vim.lsp.enable {
   'marksman',
   'fish_lsp',
   'tombi',
+  'yamlls',
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {

@@ -50,6 +50,7 @@ local mason_ensure_installed = {
   'marksman',
   'fish-lsp',
   'tombi',
+  'yaml-language-server',
   'shfmt',
   'shellcheck',
   'prettier',
