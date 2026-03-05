@@ -8,20 +8,15 @@ $directory\
 $git_state\
 $git_status )\
 $docker_context\
+$bun\
 $c\
 $cmake\
-$cobol\
-$deno\
-$dotnet\
 $elixir\
 $erlang\
-$fennel\
 $gleam\
 $golang\
 $helm\
-$java\
 $lua\
-$nim\
 $nodejs\
 $perl\
 $php\
@@ -30,10 +25,7 @@ $ruby\
 $rust\
 $terraform\
 $zig\
-$gcloud\
-$direnv\
 $env_var\
-$crystal\
 $sudo\
 $cmd_duration\
 $line_break\
