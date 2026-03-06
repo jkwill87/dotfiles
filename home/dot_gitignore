@@ -1,6 +1,7 @@
 .claude
 .elixir_ls
 .notes/
+.tmp*
 .worktrees/
 .zed
 CLAUDE.local.md
