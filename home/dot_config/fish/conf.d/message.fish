@@ -1,2 +1,2 @@
 # Disables the fish greeting message
-set -xg fish_greeting ''
+set -gx fish_greeting ''

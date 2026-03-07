@@ -1,5 +1,5 @@
 {{- if eq .chezmoi.os "darwin" }}
-set -xg KERL_CONFIGURE_OPTIONS "--without-javac --with-ssl=/opt/homebrew/opt/openssl@3"
+set -gx KERL_CONFIGURE_OPTIONS "--without-javac --with-ssl=/opt/homebrew/opt/openssl@3"
 {{- else }}
-set -xg KERL_CONFIGURE_OPTIONS "--without-javac --with-ssl=/usr"
+set -gx KERL_CONFIGURE_OPTIONS "--without-javac --with-ssl=/usr"
 {{- end }}
