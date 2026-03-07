@@ -1,0 +1,118 @@
+if not status is-interactive
+    return
+end
+
+# --- wrapper functions ---
+
+function extract --description "Extract archives"
+    argparse --ignore-unknown 'o/output=' -- $argv
+    or return
+    if set -q _flag_output
+        switch $argv[1]
+            case tar
+                set -a argv -C $_flag_output
+            case unzip
+                set -a argv -d $_flag_output
+            case unrar
+                set -a argv $_flag_output
+            case 7z 7za
+                set -a argv -o$_flag_output
+            case gunzip bunzip2 unxz unlzma
+                echo "extract: -o not supported for single-file compression" >&2
+                return 1
+        end
+    end
+    $argv
+end
+
+function archive --description "Create archives"
+    $argv
+end
+
+# --- handler functions ---
+
+function _abbr_extract
+    switch $argv[1]
+        case '*.tar.gz' '*.tgz'
+            echo "tar xzf $argv"
+        case '*.tar.bz2' '*.tbz' '*.tbz2'
+            echo "tar xjf $argv"
+        case '*.tar.xz' '*.txz'
+            echo "tar xJf $argv"
+        case '*.tar.lzma' '*.tlz'
+            echo "tar --lzma -xf $argv"
+        case '*.tar'
+            echo "tar xf $argv"
+        case '*.gz'
+            echo "gunzip $argv"
+        case '*.bz2'
+            echo "bunzip2 $argv"
+        case '*.xz'
+            echo "unxz $argv"
+        case '*.lzma'
+            echo "unlzma $argv"
+        case '*.zip'
+            echo "unzip $argv"
+        case '*.rar'
+            echo "unrar x -ad $argv"
+        case '*.7z'
+            echo "{{ if lookPath "7za" }}7za{{ else }}7z{{ end }} x $argv"
+    end
+end
+
+function _abbr_archive
+    switch $argv[1]
+        case '*.tar.gz' '*.tgz'
+            echo "tar czf $argv"
+        case '*.tar.bz2' '*.tbz2'
+            echo "tar cjf $argv"
+        case '*.tar.xz' '*.txz'
+            echo "tar cJf $argv"
+        case '*.tar'
+            echo "tar cf $argv"
+        case '*.gz'
+            echo "gzip $argv"
+        case '*.bz2'
+            echo "bzip2 $argv"
+        case '*.xz'
+            echo "xz $argv"
+        case '*.zip'
+            echo "zip -r $argv"
+        case '*.rar'
+            echo "rar a $argv"
+        case '*.7z'
+            echo "{{ if lookPath "7za" }}7za{{ else }}7z{{ end }} a $argv"
+    end
+end
+
+# --- abbreviation definitions ---
+
+abbr --add _extract --command extract --position anywhere \
+    --regex '.+\.(tar\.(gz|bz2|xz|lzma)|tgz|tbz2?|txz|tlz|tar|gz|bz2|xz|lzma|zip)' \
+    --function _abbr_extract
+
+abbr --add _archive --command archive --position anywhere \
+    --regex '.+\.(tar(\.(gz|bz2|xz))?|tgz|tbz2|txz|gz|bz2|xz|zip)' \
+    --function _abbr_archive
+
+{{ if lookPath "unrar" -}}
+abbr --add _extract_rar --command extract --position anywhere \
+    --regex '.+\.rar' \
+    --function _abbr_extract
+{{ end -}}
+
+{{ if lookPath "rar" -}}
+abbr --add _archive_rar --command archive --position anywhere \
+    --regex '.+\.rar' \
+    --function _abbr_archive
+{{ end -}}
+
+{{ if or (lookPath "7z") (lookPath "7za") -}}
+abbr --add _extract_7z --command extract --position anywhere \
+    --regex '.+\.7z' \
+    --function _abbr_extract
+
+abbr --add _archive_7z --command archive --position anywhere \
+    --regex '.+\.7z' \
+    --function _abbr_archive
+{{ end -}}
