@@ -38,17 +38,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     -- Navigation
-    bmap('gd', vim.lsp.buf.definition, 'Go to definition')
-    bmap('gD', vim.lsp.buf.declaration, 'Go to declaration')
-    bmap('gI', vim.lsp.buf.implementation, 'Go to implementation')
+    bmap('gd', function() Snacks.picker.lsp_definitions() end, 'Goto Definition')
+    bmap('gD', function() Snacks.picker.lsp_declarations() end, 'Goto Declaration')
+    bmap('gI', function() Snacks.picker.lsp_implementations() end, 'Goto Implementation')
     bmap('gr', function() Snacks.picker.lsp_references() end, 'References')
+    bmap('gy', function() Snacks.picker.lsp_type_definitions() end, 'Goto T[y]pe Definition')
+    bmap('gai', function() Snacks.picker.lsp_incoming_calls() end, 'C[a]lls Incoming')
+    bmap('gao', function() Snacks.picker.lsp_outgoing_calls() end, 'C[a]lls Outgoing')
     bmap('K', vim.lsp.buf.hover, 'Hover documentation')
 
     -- Actions
     bmap('<Leader>lr', vim.lsp.buf.rename, 'Rename symbol')
     bmap('<Leader>la', vim.lsp.buf.code_action, 'Code action')
-    bmap('<Leader>ls', function() Snacks.picker.lsp_symbols() end, 'Document symbols')
-    bmap('<Leader>lw', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace symbols')
+    bmap('<Leader>ss', function() Snacks.picker.lsp_symbols() end, 'LSP Symbols')
+    bmap('<Leader>sS', function() Snacks.picker.lsp_workspace_symbols() end, 'LSP Workspace Symbols')
 
     vim.api.nvim_buf_create_user_command(
       bufnr,
