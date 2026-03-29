@@ -6,6 +6,7 @@ require('snacks').setup {
   scroll = { enabled = true },
   git = { enabled = true },
   picker = {
+    layout = { preset = 'vertical' },
     sources = {
       files = {
         layout = { preset = 'dropdown', preview = false },
