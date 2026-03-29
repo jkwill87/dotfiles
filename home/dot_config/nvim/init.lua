@@ -11,7 +11,7 @@ local disabled_builtins = {
   'tutor',
   'zipPlugin',
 }
-local disabled_providers = { 'perl', 'ruby' }
+local disabled_providers = { 'node', 'perl', 'ruby' }
 for _, provider in ipairs(disabled_providers) do
   vim.g['loaded_' .. provider .. '_provider'] = 0
 end

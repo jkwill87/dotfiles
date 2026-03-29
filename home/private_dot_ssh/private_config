@@ -3,7 +3,8 @@ Host dug.lan
   User jkwill87
 
 Host thescore.lan
-  HostName 10.0.0.7
+  # HostName 10.0.0.7
+  HostName 10.0.0.133
   User jessy.williams
 
 Host pve.lan

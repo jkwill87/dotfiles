@@ -38,6 +38,9 @@ require('snacks').setup {
   },
 }
 
+vim.ui.input = Snacks.input.input
+vim.ui.select = Snacks.picker.select
+
 -- Keymaps — preserved from telescope
 local map = vim.keymap.set
 map('n', '<Leader><Leader>', function() Snacks.picker.files() end, { desc = 'Find files' })

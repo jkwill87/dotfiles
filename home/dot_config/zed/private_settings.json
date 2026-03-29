@@ -7,10 +7,15 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
   "git_panel": {
     "tree_view": false
   },
-  "disable_ai": true,
+  "disable_ai": false,
   "session": {
     "trust_all_worktrees": true
   },

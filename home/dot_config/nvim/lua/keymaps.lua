@@ -17,7 +17,6 @@ map('n', '<Leader>t', '<Cmd>terminal<CR>', { desc = 'Open terminal' })
 map('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
 
 -- Buffer management (barbar)
-map('n', '<C-q>', '<Cmd>BufferClose<CR>', { desc = 'Close buffer' })
 map('n', '<Leader>[', '<Cmd>BufferPrevious<CR>', { desc = 'Previous buffer' })
 map('n', '<Leader>]', '<Cmd>BufferNext<CR>', { desc = 'Next buffer' })
 map('n', '<Leader>[[', '<Cmd>BufferMovePrevious<CR>', { desc = 'Move buffer left' })
@@ -25,9 +24,11 @@ map('n', '<Leader>]]', '<Cmd>BufferMoveNext<CR>', { desc = 'Move buffer right' }
 for i = 1, 9 do
   map('n', '<Leader>' .. i, '<Cmd>BufferGoto ' .. i .. '<CR>', { desc = 'Go to buffer ' .. i })
 end
+map('n', '<Leader>bn', '<Cmd>enew<CR>', { desc = 'New buffer' })
+map('n', '<Leader>bd', function() Snacks.bufdelete() end, { desc = 'Delete buffer' })
 map('n', '<Leader>bp', '<Cmd>BufferPin<CR>', { desc = 'Pin buffer' })
 map('n', '<Leader>b=', '<Cmd>BufferCloseAllButPinned<CR>', { desc = 'Close unpinned buffers' })
-map('n', '<A-Space>', '<Cmd>BufferPick<CR>', { desc = 'Pick buffer' })
+
 
 -- LSP
 map('n', '<Leader>f', function() require('conform').format { lsp_fallback = true } end, { desc = 'Format buffer' })
