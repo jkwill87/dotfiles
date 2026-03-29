@@ -1,5 +1,5 @@
 require('snacks').setup {
-  words = { enabled = true },
+  words = { enabled = false },
   statuscolumn = { enabled = true },
   notifier = { enabled = true },
   input = { enabled = true },
@@ -30,7 +30,7 @@ require('snacks').setup {
         layout = { preset = 'ivy' },
       },
       explorer = {
-        layout = { preset = 'ivy' },
+        layout = { preset = 'sidebar' },
       },
       select = {
         layout = { preset = 'select' },
@@ -51,6 +51,7 @@ map('n', '<Leader>b', function() Snacks.picker.buffers() end, { desc = 'Buffers'
 map('n', '<C-f>', function() Snacks.picker.lines() end, { desc = 'Buffer search' })
 map('n', '<Leader>e', function() Snacks.picker.explorer() end, { desc = 'File browser' })
 map('n', '<Leader>r', function() Snacks.picker.recent() end, { desc = 'Recent files' })
+map('n', '<Leader>/', function() Snacks.picker.grep() end, { desc = 'Grep' })
 
 -- Git
 map('n', '<Leader>gb', function() Snacks.picker.git_branches() end, { desc = 'Git Branches' })
@@ -58,8 +59,13 @@ map('n', '<Leader>gl', function() Snacks.picker.git_log() end, { desc = 'Git Log
 map('n', '<Leader>gL', function() Snacks.picker.git_log_line() end, { desc = 'Git Log Line' })
 map('n', '<Leader>gs', function() Snacks.picker.git_status() end, { desc = 'Git Status' })
 map('n', '<Leader>gS', function() Snacks.picker.git_stash() end, { desc = 'Git Stash' })
-map('n', '<Leader>gd', function() Snacks.picker.git_diff() end, { desc = 'Git Diff (Hunks)' })
+map('n', '<Leader>gd', function()
+  if next(require('diffview.lib').views) then vim.cmd('DiffviewClose') else vim.cmd('DiffviewOpen') end
+end, { desc = 'Toggle Diffview' })
 map('n', '<Leader>gf', function() Snacks.picker.git_log_file() end, { desc = 'Git Log File' })
+map('n', '<Leader>gh', function()
+  if next(require('diffview.lib').views) then vim.cmd('DiffviewClose') else vim.cmd('DiffviewFileHistory %') end
+end, { desc = 'Toggle Diffview File History' })
 map({ 'n', 'v' }, '<Leader>gB', function() Snacks.gitbrowse() end, { desc = 'Git Browse' })
 
 -- GitHub

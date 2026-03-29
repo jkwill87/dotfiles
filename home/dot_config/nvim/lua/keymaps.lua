@@ -24,11 +24,20 @@ map('n', '<Leader>]]', '<Cmd>BufferMoveNext<CR>', { desc = 'Move buffer right' }
 for i = 1, 9 do
   map('n', '<Leader>' .. i, '<Cmd>BufferGoto ' .. i .. '<CR>', { desc = 'Go to buffer ' .. i })
 end
+-- Hide 2-9 from which-key; buffer 1 entry hints at the full range
+local wk = require('which-key')
+wk.add { { '<Leader>1', desc = 'Go to buffer 1-9' } }
+for i = 2, 9 do
+  wk.add { { '<Leader>' .. i, hidden = true } }
+end
 map('n', '<Leader>bn', '<Cmd>enew<CR>', { desc = 'New buffer' })
 map('n', '<Leader>bd', function() Snacks.bufdelete() end, { desc = 'Delete buffer' })
 map('n', '<Leader>bp', '<Cmd>BufferPin<CR>', { desc = 'Pin buffer' })
-map('n', '<Leader>b=', '<Cmd>BufferCloseAllButPinned<CR>', { desc = 'Close unpinned buffers' })
+map('n', '<Leader>b=', '<Cmd>BufferCloseAllButCurrent<CR>', { desc = 'Close all but current buffer' })
 
 
 -- LSP
 map('n', '<Leader>f', function() require('conform').format { lsp_fallback = true } end, { desc = 'Format buffer' })
+
+-- Which-key
+map('n', '<Leader>?', function() require('which-key').show({ global = false }) end, { desc = 'Buffer Local Keymaps (which-key)' })

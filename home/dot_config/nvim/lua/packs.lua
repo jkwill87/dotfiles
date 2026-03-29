@@ -11,9 +11,11 @@ vim.pack.add {
   gh .. 'romgrk/barbar.nvim',
   gh .. 'kyazdani42/nvim-web-devicons',
   gh .. 'NvChad/nvim-colorizer.lua',
+  gh .. 'ya2s/nvim-cursorline',
 
   -- Git
   gh .. 'lewis6991/gitsigns.nvim',
+  gh .. 'sindrets/diffview.nvim',
 
   -- Treesitter
   gh .. 'nvim-treesitter/nvim-treesitter',

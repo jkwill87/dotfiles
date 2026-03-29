@@ -39,6 +39,20 @@ require('plugins.conform')
 require('gitsigns').setup()
 require('nvim-autopairs').setup()
 require('nvim-surround').setup()
+require('nvim-cursorline').setup {
+  disable_filetypes = {},
+  disable_buftypes = {},
+  cursorline = {
+    enable = false,
+  },
+  cursorword = {
+    enable = true,
+    min_length = 3,
+    hl = { underline = true },
+  }
+}
+
+
 require('mason').setup { ui = { check_outdated_packages_on_open = false } }
 
 local mason_ensure_installed = {

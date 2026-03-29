@@ -5,6 +5,9 @@ return {
   settings = {
     Lua = {
       runtime = { version = 'LuaJIT' },
+      diagnostics = {
+        globals = { 'Snacks' },
+      },
       workspace = {
         checkThirdParty = false,
         library = { vim.env.VIMRUNTIME },
