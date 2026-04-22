@@ -22,7 +22,7 @@ Host node.lan
 Host = node.lan[*]
     HostName 10.0.1.106
     User sysadmin
-    RemoteCommand zmx attach %k
+    RemoteCommand zmx attach (string match -rg '\[([^]]+)\]' '%k')
     RequestTTY yes
     ControlPath ~/.ssh/cm-%r@%h:%p
     ControlMaster auto
