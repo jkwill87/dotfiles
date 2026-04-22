@@ -19,6 +19,15 @@ Host node.lan
   HostName 10.0.1.106
   User sysadmin
 
+Host = node.lan[*]
+    HostName 10.0.1.106
+    User sysadmin
+    RemoteCommand zmx attach %k
+    RequestTTY yes
+    ControlPath ~/.ssh/cm-%r@%h:%p
+    ControlMaster auto
+    ControlPersist 10m
+
 Host crate.lan
   HostName 10.0.1.101
   User sysadmin
