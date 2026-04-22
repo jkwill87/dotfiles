@@ -2,6 +2,7 @@ format = """
 $username\
 [@](fg:cyan)\
 $hostname\
+${env_var.ZMX_SESSION}\
 [:](fg:cyan)\
 $directory\
 ($git_branch\
@@ -65,6 +66,11 @@ style = "fg:cyan"
 read_only = " ro"
 truncation_length = 3
 truncate_to_repo = true
+
+[env_var.ZMX_SESSION]
+format = '[\[$env_value\]]($style)'
+description = "zmx session name"
+style = "bold magenta"
 
 [character]
 success_symbol = "[❯](fg:purple)"
