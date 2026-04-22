@@ -82,7 +82,7 @@
           "grep": true,
           "terminal": true,
           "thinking": true,
-          "web_search": true,
+          "search_web": true,
           "open": true
         },
         "enable_all_context_servers": true,
@@ -115,6 +115,33 @@
   "languages": {
     "Plain Text": {
       "show_edit_predictions": false
+    },
+    "Elixir": {
+      "language_servers": [
+        "dexter",
+        "!expert",
+        "!elixir-ls",
+        "!next-ls",
+        "!lexical"
+      ]
+    },
+    "EEx": {
+      "language_servers": [
+        "dexter",
+        "!expert",
+        "!elixir-ls",
+        "!next-ls",
+        "!lexical"
+      ]
+    },
+    "HEEx": {
+      "language_servers": [
+        "dexter",
+        "!expert",
+        "!elixir-ls",
+        "!next-ls",
+        "!lexical"
+      ]
     }
   }
 }
