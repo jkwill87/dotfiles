@@ -18,5 +18,9 @@
 .config/tty/debian.sh
 {{- end }}
 
+{{- if not (lookPath "zmx") }}
+bin/zz
+{{- end }}
+
 .config/fish/fish_variables
 README.md
