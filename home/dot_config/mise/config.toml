@@ -1,4 +1,6 @@
 [tools]
+bun = "latest"
+python = "latest"
 chezmoi = "latest"
 fd = "latest"
 fzf = "latest"
