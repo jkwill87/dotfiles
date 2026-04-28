@@ -1,3 +1,17 @@
+{{- define "zmxhost" -}}
+Host {{ .name }}
+  HostName {{ .hostname }}
+  User {{ .user }}
+
+Host = {{ .name }}[*]
+    HostName {{ .hostname }}
+    User {{ .user }}
+    RemoteCommand zmx attach (string match -rg '\[([^]]+)\]' '%k')
+    RequestTTY yes
+    ControlPath ~/.ssh/cm-%r@%h:%p
+    ControlMaster auto
+    ControlPersist 10m
+{{- end -}}
 Host dug.lan
   HostName 10.0.0.11
   User jkwill87
@@ -7,26 +21,13 @@ Host thescore.lan
   HostName 10.0.0.133
   User jessy.williams
 
-Host pve.lan
-  HostName 10.0.1.1
-  User root
+{{ template "zmxhost" (dict "name" "pve.lan" "hostname" "10.0.1.1" "user" "root") }}
 
 Host ansible.lan
   HostName 10.0.1.110
   User sysadmin
 
-Host node.lan
-  HostName 10.0.1.106
-  User sysadmin
-
-Host = node.lan[*]
-    HostName 10.0.1.106
-    User sysadmin
-    RemoteCommand zmx attach (string match -rg '\[([^]]+)\]' '%k')
-    RequestTTY yes
-    ControlPath ~/.ssh/cm-%r@%h:%p
-    ControlMaster auto
-    ControlPersist 10m
+{{ template "zmxhost" (dict "name" "node.lan" "hostname" "10.0.1.106" "user" "sysadmin") }}
 
 Host crate.lan
   HostName 10.0.1.101
@@ -68,9 +69,7 @@ Host syncthing.lan
   HostName 10.0.1.113
   User sysadmin
 
-Host traefik.lan
-  HostName 10.0.1.108
-  User sysadmin
+{{ template "zmxhost" (dict "name" "traefik.lan" "hostname" "10.0.1.108" "user" "sysadmin") }}
 
 Host transmission.lan
   HostName 10.0.1.105
@@ -84,6 +83,4 @@ Host teek.lan
   HostName 10.0.0.26
   User jkwill87
 
-Host docker.lan
-  HostName 10.0.111.0
-  User sysadmin
+{{ template "zmxhost" (dict "name" "docker.lan" "hostname" "10.0.111.0" "user" "sysadmin") }}
