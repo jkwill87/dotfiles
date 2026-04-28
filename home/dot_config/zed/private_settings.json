@@ -7,26 +7,36 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
   "agent_servers": {
     "claude-acp": {
-      "type": "registry"
-    }
+      "type": "registry",
+    },
   },
   "git_panel": {
-    "tree_view": false
+    "dock": "left",
+    "tree_view": false,
   },
   "disable_ai": false,
   "session": {
-    "trust_all_worktrees": true
+    "trust_all_worktrees": true,
   },
   "edit_predictions": {
     "provider": "copilot",
-    "mode": "subtle"
+    "mode": "subtle",
   },
   "title_bar": {
     "show_menus": false,
     "show_branch_name": true,
-    "show_branch_icon": true
+    "show_branch_icon": true,
   },
   "wrap_guides": [100, 120],
   "use_system_window_tabs": true,
@@ -42,26 +52,27 @@
     "ruff": true,
     "sql": true,
     "toml": true,
-    "vscode-dark-modern": true
+    "vscode-dark-modern": true,
   },
   "ssh_connections": [
     {
       "host": "node.lan",
       "projects": [
         {
-          "paths": ["/home/sysadmin"]
-        }
-      ]
-    }
+          "paths": ["/home/sysadmin"],
+        },
+      ],
+    },
   ],
   "agent": {
+    "dock": "right",
     "tool_permissions": {
-      "default": "allow"
+      "default": "allow",
     },
     "enable_feedback": false,
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "model": "gpt-4o",
     },
     "profiles": {
       "write": {
@@ -83,17 +94,17 @@
           "terminal": true,
           "thinking": true,
           "search_web": true,
-          "open": true
+          "open": true,
         },
         "enable_all_context_servers": true,
-        "context_servers": {}
-      }
+        "context_servers": {},
+      },
     },
     "default_profile": "write",
     "model_parameters": [],
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "model": "gpt-4o",
     },
   },
   "theme": "VSCode Dark Modern",
@@ -106,15 +117,15 @@
     // "code_actions": false,
     // "folds": false,
     "runnables": false,
-    "breakpoints": false
+    "breakpoints": false,
   },
   "toolbar": {
     "breadcrumbs": false,
-    "quick_actions": false
+    "quick_actions": false,
   },
   "languages": {
     "Plain Text": {
-      "show_edit_predictions": false
+      "show_edit_predictions": false,
     },
     "Elixir": {
       "language_servers": [
@@ -122,8 +133,8 @@
         "!expert",
         "!elixir-ls",
         "!next-ls",
-        "!lexical"
-      ]
+        "!lexical",
+      ],
     },
     "EEx": {
       "language_servers": [
@@ -131,8 +142,8 @@
         "!expert",
         "!elixir-ls",
         "!next-ls",
-        "!lexical"
-      ]
+        "!lexical",
+      ],
     },
     "HEEx": {
       "language_servers": [
@@ -140,8 +151,8 @@
         "!expert",
         "!elixir-ls",
         "!next-ls",
-        "!lexical"
-      ]
-    }
-  }
+        "!lexical",
+      ],
+    },
+  },
 }
