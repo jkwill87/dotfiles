@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "cli_default_open_behavior": "new_window",
   "project_panel": {
     "dock": "left",
   },
@@ -17,6 +18,9 @@
     "dock": "left",
   },
   "agent_servers": {
+    "github-copilot-cli": {
+      "type": "registry",
+    },
     "claude-acp": {
       "type": "registry",
     },
@@ -34,9 +38,9 @@
     "mode": "subtle",
   },
   "title_bar": {
+    "show_branch_status_icon": true,
     "show_menus": false,
     "show_branch_name": true,
-    "show_branch_icon": true,
   },
   "wrap_guides": [100, 120],
   "use_system_window_tabs": true,
