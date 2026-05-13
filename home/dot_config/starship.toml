@@ -38,6 +38,8 @@ add_newline = true
 # Set custom color palette
 palette = "starship_custom"
 
+command_timeout = 1000
+
 # Define custom colors
 [palettes.starship_custom]
 blue = "#005fff"
