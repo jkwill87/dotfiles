@@ -20,13 +20,14 @@ vim.lsp.enable {
   'lua_ls',
   'ts_ls',
   'jsonls',
-  'expert',
+  'dexter',
   'jq',
   'rust_analyzer',
   'marksman',
   'fish_lsp',
   'tombi',
   'yamlls',
+  'amber_lsp',
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {

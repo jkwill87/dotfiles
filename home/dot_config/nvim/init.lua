@@ -68,6 +68,8 @@ local mason_ensure_installed = {
   'shfmt',
   'shellcheck',
   'prettier',
+  'dexter',
+  'amber-lsp',
 }
 local registry = require('mason-registry')
 registry.refresh(function()
