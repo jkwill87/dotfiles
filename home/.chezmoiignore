@@ -2,6 +2,7 @@
 .config/tty/homebrew.sh
 .config/tty/darwin.sh
 .config/fish/conf.d/erlang.fish
+Library/Application Support/com.mitchellh.ghostty
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}

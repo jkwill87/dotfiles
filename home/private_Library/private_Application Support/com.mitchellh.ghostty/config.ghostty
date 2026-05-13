@@ -1,0 +1,9 @@
+font-family = Hack Nerd Font Mono Regular
+font-size = 14
+theme = Builtin Tango Dark
+cursor-style = block
+background-opacity = .75
+background-blur = 30
+unfocused-split-opacity = 0.40
+macos-titlebar-proxy-icon = hidden
+shell-integration-features = ssh-env,ssh-terminfo
