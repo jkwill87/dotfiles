@@ -19,6 +19,12 @@ sudo apt-get install -y fish tmux git curl build-essential
 if ! command -v mise >/dev/null; then
   curl https://mise.run | sh
 fi
+
+# The Linux installer uses ~/.local/bin, which may not be on PATH yet.
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
 {{ end -}}
 
 # Install CLI tools via mise
