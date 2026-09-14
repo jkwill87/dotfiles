@@ -16,7 +16,7 @@ zoxide = "latest"
 experimental = true
 idiomatic_version_file_enable_tools = ["python"]
 python.uv_venv_auto = true
-trusted_config_paths = ["/Users/jessy.williams/Documents/work/"]
+trusted_config_paths = ["~/Documents"]
 
 [env]
 _.file = "~/.env"
