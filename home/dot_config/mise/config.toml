@@ -1,18 +1,23 @@
 [tools]
 bun = "latest"
-python = "latest"
 chezmoi = "latest"
 fd = "latest"
 fzf = "latest"
 gum = "latest"
-node = "24"
-"npm:tree-sitter-cli" = "latest"
+node = "26"
+python = "latest"
 ripgrep = "latest"
 starship = "latest"
 zoxide = "latest"
 "aqua:remoteoss/dexter" = "latest"
+"npm:agent-slack" = "latest"
 
 [settings]
+experimental = true
 idiomatic_version_file_enable_tools = ["python"]
 python.uv_venv_auto = true
-experimental = true
+trusted_config_paths = ["/Users/jessy.williams/Documents/work/"]
+
+[env]
+_.file = "~/.env"
+
