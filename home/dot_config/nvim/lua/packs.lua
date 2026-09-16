@@ -55,8 +55,14 @@ vim.pack.add {
   gh .. 'MTDL9/vim-log-highlighting',
 }
 
--- Rebuild treesitter parsers after plugin updates
+-- Rebuild treesitter parsers when nvim-treesitter itself changes
 vim.api.nvim_create_autocmd('User', {
   pattern = 'PackChanged',
-  callback = function() vim.cmd('TSUpdate') end,
+  callback = function(ev)
+    local data = ev.data
+    if data.spec.name ~= 'nvim-treesitter' then return end
+    if data.kind == 'install' or data.kind == 'update' then
+      vim.cmd('TSUpdate')
+    end
+  end,
 })
