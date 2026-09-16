@@ -40,22 +40,28 @@ Templates have access to `.name`, `.email` (prompted on `chezmoi init`), and all
 
 ## Neovim Architecture
 
-Uses native `vim.pack` (not lazy.nvim). Neovim 0.12+ required.
+Uses native `vim.pack` (not lazy.nvim). Neovim 0.12 or later required. `nvim-pack-lock.json` is chezmoi-managed and checked in, per `:h vim.pack-lockfile`.
 
-**Load order** (`init.lua`): packs → options → plugin configs → keymaps → autocmds → colorscheme (kanagawa)
+**Load order** (`init.lua`): packs, colorscheme (kanagawa), options, plugin configs, inline plugin setups, keymaps, autocmds.
 
 **Key files**:
 - `lua/packs.lua` — declares all plugins via `vim.pack.add()` as "start" packages
-- `lua/options.lua` — editor settings (2-space indent, no swap/backup, colorcolumn at 81/101/121)
+- `lua/options.lua` — editor settings (2-space indent, no swap/backup, colorcolumn at 81/101/121, fold and popup config)
 - `lua/keymaps.lua` — key mappings (barbar buffer nav, splits, terminal, format)
 - `lua/autocmds.lua` — trim trailing whitespace on save, terminal mode tweaks
 - `lua/plugins/*.lua` — per-plugin configuration (each file configures one plugin)
-- `lsp/*.lua` — one file per language server, each exports `cmd`, `filetypes`, `root_markers`, and optional `settings`
-- `ftplugin/*.lua` — per-filetype overrides (e.g., markdown enables soft wrap)
+- `lsp/*.lua` — one file per language server, each exports `cmd`, `root_markers`, and optionally `filetypes`, `settings` or `on_attach`
+- `ftplugin/*.lua` — per-filetype overrides (e.g., markdown enables soft wrap). Always use `vim.opt_local`, never `vim.o`, which would set the global value of a window-local option.
 
-**Plugin config pattern**: each `lua/plugins/<name>.lua` file is `require`'d by `init.lua` and calls the plugin's `setup()`. LSP servers are enabled in `lua/plugins/lsp.lua` which loops over configs from `lsp/`.
+**Plugin config pattern**: each `lua/plugins/<name>.lua` file is `require`'d by `init.lua` and calls the plugin's `setup()`. `lua/plugins/lsp.lua` holds the explicit `vim.lsp.enable` list, whose names must each match a file in `lsp/`; enabling a name with no such file fails silently.
 
-**Primary picker**: snacks.nvim (replaces telescope). Leader key mappings: `<Leader><Leader>` files, `<Leader>g` grep, `<Leader>b` buffers, `<Leader>e` explorer.
+**Primary picker**: snacks.nvim (replaces telescope). Leader key mappings: `<Leader><Leader>` files, `<Leader>/` grep, `<Leader>bb` buffers, `<Leader>e` explorer.
+
+**Native over plugins**: folding uses `vim.lsp.foldexpr` (no nvim-ufo), Copilot uses `vim.lsp.inline_completion` with `copilot-language-server` (no copilot.lua), colour hints use the default `vim.lsp.document_color` (no nvim-colorizer), and completion uses `vim.lsp.completion`. Prefer a core feature over adding a plugin.
+
+**Keymap prefixes**: a bare mapping that is also the prefix of a longer mapping stalls for `timeoutlen` on every press. `lua/plugins/lsp.lua` deletes Nvim's global `gr*` LSP mappings for this reason, since `gr` is bound to references.
+
+**Treesitter**: nvim-treesitter is on its `main` branch, so parsers come from the explicit list in `lua/plugins/treesitter.lua` via `require('nvim-treesitter').install()`. `:TSUpdate` only refreshes parsers already installed, so new languages must be added to that list. Requires the `tree-sitter` CLI, declared in `dot_config/mise/config.toml`. Indentation is deliberately left to Nvim's built-in indent scripts.
 
 **Formatting**: conform.nvim — prettier for markdown/yaml, shfmt for shell scripts. `<Leader>f` to format.
 
@@ -73,7 +79,7 @@ Platform-specific code lives in dedicated tty scripts, deployed only to the rele
 
 ## Tool Management
 
-CLI tools (neovim, starship, fzf, fd, ripgrep, zoxide) are managed by **mise** via `dot_config/mise/config.toml`. System package managers (`brew`, `pacman`, `apt-get`) only install: fish, tmux, git, curl, build tools, and mise itself.
+CLI tools (starship, fzf, fd, ripgrep, zoxide, tree-sitter) are managed by **mise** via `dot_config/mise/config.toml`. Neovim itself is not managed by mise. Neovim's language servers and formatters are installed by mason, from the list in `dot_config/nvim/init.lua`. System package managers (`brew`, `pacman`, `apt-get`) only install: fish, tmux, git, curl, build tools, and mise itself.
 
 mise is activated in `dot_bashrc` and `dot_zshrc` after tty script sourcing:
 
