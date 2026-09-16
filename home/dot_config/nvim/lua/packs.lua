@@ -1,4 +1,4 @@
--- Plugin declarations using vim.pack (Neovim 0.12+)
+-- Plugin declarations using vim.pack (Neovim 0.12 or later)
 -- All plugins load as 'start' packages
 
 local gh = 'https://github.com/'
@@ -9,8 +9,7 @@ vim.pack.add {
 
   -- UI
   gh .. 'romgrk/barbar.nvim',
-  gh .. 'kyazdani42/nvim-web-devicons',
-  gh .. 'NvChad/nvim-colorizer.lua',
+  gh .. 'nvim-tree/nvim-web-devicons',
   gh .. 'ya2s/nvim-cursorline',
 
   -- Git
@@ -25,14 +24,7 @@ vim.pack.add {
   gh .. 'folke/snacks.nvim',
 
   -- LSP
-  gh .. 'williamboman/mason.nvim',
-
-  -- Copilot
-  gh .. 'zbirenbaum/copilot.lua',
-
-  -- Folding
-  gh .. 'kevinhwang91/nvim-ufo',
-  gh .. 'kevinhwang91/promise-async',
+  gh .. 'mason-org/mason.nvim',
 
   -- Editing
   gh .. 'windwp/nvim-autopairs',

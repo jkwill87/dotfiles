@@ -37,6 +37,16 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.splitkeep = 'screen'
 
+-- Folding via LSP, falling back to treesitter. Folds start closed-capable but
+-- disabled, so `zi` turns them on.
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+vim.o.foldenable = false
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldcolumn = '1'
+vim.o.fillchars = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:▶]]
+
 -- Whitespace rendering
 vim.opt.listchars = {
   tab = '>>',

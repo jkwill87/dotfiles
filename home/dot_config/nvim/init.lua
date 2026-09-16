@@ -1,4 +1,4 @@
--- Neovim 0.12+ configuration using vim.pack
+-- Neovim 0.12 or later configuration using vim.pack
 
 -- Disable built-in plugins
 local disabled_builtins = {
@@ -7,7 +7,6 @@ local disabled_builtins = {
   'matchparen',
   'netrwPlugin',
   'tarPlugin',
-  'tohtml',
   'tutor',
   'zipPlugin',
 }
@@ -30,9 +29,7 @@ require('options')
 require('plugins.barbar')
 require('plugins.treesitter')
 require('plugins.snacks')
-require('plugins.ufo')
 require('plugins.lsp')
-require('plugins.copilot')
 require('plugins.conform')
 
 -- Inline plugin setups (no custom config needed)
@@ -52,31 +49,34 @@ require('nvim-cursorline').setup {
   }
 }
 
-
 require('mason').setup { ui = { check_outdated_packages_on_open = false } }
 
 local mason_ensure_installed = {
-  'lua-language-server',
-  'typescript-language-server',
-  'json-lsp',
-  'jq-lsp',
-  'rust-analyzer',
-  'marksman',
+  'copilot-language-server',
   'fish-lsp',
-  'tombi',
-  'yaml-language-server',
-  'shfmt',
-  'shellcheck',
+  'json-lsp',
+  'lua-language-server',
+  'marksman',
   'prettier',
-  'dexter',
-  'amber-lsp',
+  'rust-analyzer',
+  'shellcheck',
+  'shfmt',
+  'tombi',
+  'typescript-language-server',
+  'yaml-language-server',
 }
 local registry = require('mason-registry')
 registry.refresh(function()
   for _, name in ipairs(mason_ensure_installed) do
     local ok, pkg = pcall(registry.get_package, name)
-    if ok and not pkg:is_installed() then
-      pkg:install()
+    if not ok then
+      vim.notify('mason: unknown package ' .. name, vim.log.levels.WARN)
+    elseif not pkg:is_installed() then
+      pkg:install():once('closed', function()
+        if not pkg:is_installed() then
+          vim.notify('mason: failed to install ' .. name, vim.log.levels.ERROR)
+        end
+      end)
     end
   end
 end)
