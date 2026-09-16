@@ -16,11 +16,12 @@ map('n', '<Leader>n', '<Cmd>set nu! rnu!<CR>', { desc = 'Toggle line numbers' })
 map('n', '<Leader>t', '<Cmd>terminal<CR>', { desc = 'Open terminal' })
 map('t', '<Esc>', [[<C-\><C-n>]], { desc = 'Exit terminal mode' })
 
--- Buffer management (barbar)
+-- Buffer management (barbar). Moving a buffer uses <Leader>{ and <Leader>}
+-- rather than doubling the nav keys, which would stall them for 'timeoutlen'.
 map('n', '<Leader>[', '<Cmd>BufferPrevious<CR>', { desc = 'Previous buffer' })
 map('n', '<Leader>]', '<Cmd>BufferNext<CR>', { desc = 'Next buffer' })
-map('n', '<Leader>[[', '<Cmd>BufferMovePrevious<CR>', { desc = 'Move buffer left' })
-map('n', '<Leader>]]', '<Cmd>BufferMoveNext<CR>', { desc = 'Move buffer right' })
+map('n', '<Leader>{', '<Cmd>BufferMovePrevious<CR>', { desc = 'Move buffer left' })
+map('n', '<Leader>}', '<Cmd>BufferMoveNext<CR>', { desc = 'Move buffer right' })
 for i = 1, 9 do
   map('n', '<Leader>' .. i, '<Cmd>BufferGoto ' .. i .. '<CR>', { desc = 'Go to buffer ' .. i })
 end
@@ -30,13 +31,13 @@ wk.add { { '<Leader>1', desc = 'Go to buffer 1-9' } }
 for i = 2, 9 do
   wk.add { { '<Leader>' .. i, hidden = true } }
 end
+map('n', '<Leader>bb', function() Snacks.picker.buffers() end, { desc = 'Buffers' })
 map('n', '<Leader>bn', '<Cmd>enew<CR>', { desc = 'New buffer' })
 map('n', '<Leader>bd', function() Snacks.bufdelete() end, { desc = 'Delete buffer' })
 map('n', '<Leader>bp', '<Cmd>BufferPin<CR>', { desc = 'Pin buffer' })
 map('n', '<Leader>b=', '<Cmd>BufferCloseAllButCurrent<CR>', { desc = 'Close all but current buffer' })
 
-
--- LSP
+-- Formatting
 map('n', '<Leader>f', function() require('conform').format { lsp_fallback = true } end, { desc = 'Format buffer' })
 
 -- Which-key

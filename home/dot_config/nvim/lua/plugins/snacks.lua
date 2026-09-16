@@ -47,7 +47,6 @@ local map = vim.keymap.set
 
 -- Files
 map('n', '<Leader><Leader>', function() Snacks.picker.files() end, { desc = 'Find files' })
-map('n', '<Leader>b', function() Snacks.picker.buffers() end, { desc = 'Buffers' })
 map('n', '<C-f>', function() Snacks.picker.lines() end, { desc = 'Buffer search' })
 map('n', '<Leader>e', function() Snacks.picker.explorer() end, { desc = 'File browser' })
 map('n', '<Leader>r', function() Snacks.picker.recent() end, { desc = 'Recent files' })
@@ -101,8 +100,6 @@ map('n', '<Leader>.', function() Snacks.scratch() end, { desc = 'Toggle Scratch 
 map('n', '<Leader>S', function() Snacks.scratch.select() end, { desc = 'Select Scratch Buffer' })
 map('n', '<Leader>cR', function() Snacks.rename.rename_file() end, { desc = 'Rename File' })
 map('n', '<Leader>un', function() Snacks.notifier.hide() end, { desc = 'Dismiss All Notifications' })
-map({ 'n', 't' }, ']]', function() Snacks.words.jump(vim.v.count1) end, { desc = 'Next Reference' })
-map({ 'n', 't' }, '[[', function() Snacks.words.jump(-vim.v.count1) end, { desc = 'Prev Reference' })
 map('n', '<Leader>N', function()
   Snacks.win({
     file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
