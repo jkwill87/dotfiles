@@ -1,3 +1,3 @@
-vim.o.colorcolumn = '121'
-vim.o.foldmethod = 'indent'
-vim.o.foldenable = false
+vim.opt_local.colorcolumn = '121'
+vim.opt_local.foldmethod = 'indent'
+vim.opt_local.foldenable = false
