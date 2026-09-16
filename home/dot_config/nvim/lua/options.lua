@@ -1,8 +1,9 @@
 -- Behaviour
-vim.o.completeopt = 'menuone,noinsert,noselect'
+vim.o.completeopt = 'menuone,popup,fuzzy,noinsert'
 vim.o.errorbells = false
 vim.o.showmode = false
-vim.o.smartcase = true
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 -- Undo history
 vim.o.undodir = vim.fn.stdpath('cache') .. '/undodir'
@@ -31,11 +32,18 @@ vim.o.modelines = 1
 
 -- Searching
 vim.o.showmatch = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- Splits
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.splitkeep = 'screen'
+
+-- Floats and popup menu
+vim.o.winborder = 'rounded'
+vim.o.pumborder = 'rounded'
+vim.o.pummaxwidth = 80
 
 -- Folding via LSP, falling back to treesitter. Folds start closed-capable but
 -- disabled, so `zi` turns them on.

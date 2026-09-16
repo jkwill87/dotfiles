@@ -86,8 +86,6 @@ require('auto-session').setup {
   suppressed_dirs = { '~/' },
 }
 
-vim.o.timeout = true
-vim.o.timeoutlen = 300
 require('which-key').setup()
 
 -- Keymaps and autocmds (loaded last so all plugins are available)
