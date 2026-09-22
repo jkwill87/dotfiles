@@ -4,21 +4,16 @@ chezmoi = "latest"
 fd = "latest"
 fzf = "latest"
 gum = "latest"
-kubectl = "latest"
 node = "26"
 python = "latest"
 ripgrep = "latest"
 starship = "latest"
-tree-sitter = "latest"
 zoxide = "latest"
-"aqua:remoteoss/dexter" = "latest"
-"npm:agent-slack" = "latest"
 
 [settings]
 experimental = true
 idiomatic_version_file_enable_tools = ["python"]
 python.uv_venv_auto = true
-trusted_config_paths = ["~/Documents"]
 
 [env]
 _.file = "~/.env"
