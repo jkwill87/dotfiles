@@ -41,4 +41,4 @@ map('n', '<Leader>b=', '<Cmd>BufferCloseAllButCurrent<CR>', { desc = 'Close all 
 map('n', '<Leader>f', function() require('conform').format { lsp_fallback = true } end, { desc = 'Format buffer' })
 
 -- Which-key
-map('n', '<Leader>?', function() require('which-key').show({ global = false }) end, { desc = 'Buffer Local Keymaps (which-key)' })
+map('n', '<Leader>sK', function() require('which-key').show({ global = false }) end, { desc = 'Buffer Local Keymaps (which-key)' })

@@ -29,6 +29,7 @@ require('options')
 require('plugins.barbar')
 require('plugins.treesitter')
 require('plugins.snacks')
+require('plugins.claude-keyfinder')
 require('plugins.lsp')
 require('plugins.conform')
 

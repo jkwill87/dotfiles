@@ -57,6 +57,8 @@ Uses native `vim.pack` (not lazy.nvim). Neovim 0.12 or later required. `nvim-pac
 
 **Primary picker**: snacks.nvim (replaces telescope). Leader key mappings: `<Leader><Leader>` files, `<Leader>/` grep, `<Leader>bb` buffers, `<Leader>e` explorer.
 
+**Keymap lookup**: claude-keyfinder.nvim on `<Leader>?` asks Claude, in plain English, for the mapping or command that does something; its config passes telemetry-off settings to the `claude` CLI. which-key's buffer-local view is on `<Leader>sK`.
+
 **Native over plugins**: folding uses `vim.lsp.foldexpr` (no nvim-ufo), Copilot uses `vim.lsp.inline_completion` with `copilot-language-server` (no copilot.lua), colour hints use the default `vim.lsp.document_color` (no nvim-colorizer), and completion uses `vim.lsp.completion`. Prefer a core feature over adding a plugin.
 
 **Keymap prefixes**: a bare mapping that is also the prefix of a longer mapping stalls for `timeoutlen` on every press. `lua/plugins/lsp.lua` deletes Nvim's global `gr*` LSP mappings for this reason, since `gr` is bound to references.

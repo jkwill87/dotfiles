@@ -37,6 +37,9 @@ vim.pack.add {
   -- Keymap hints
   gh .. 'folke/which-key.nvim',
 
+  -- Keymap lookup
+  gh .. 'jkwill87/claude-keyfinder.nvim',
+
   -- Formatting
   gh .. 'stevearc/conform.nvim',
 
